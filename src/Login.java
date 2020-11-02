@@ -1,3 +1,3 @@
 public class Login {
-    public static final int LOGIN = 1;
+    public static final int LOGIN = 2;
 }
