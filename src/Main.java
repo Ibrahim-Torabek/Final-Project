@@ -13,7 +13,7 @@ public class Main  extends Application {
     public void start(Stage stage) throws Exception {
         BorderPane root = new BorderPane();
 
-        root.setCenter(new TabPane());
+        root.setCenter(TabPane.getInstance());
         Scene scene = new Scene(root,Const.SCREEN_WIDTH,Const.SCREEN_HEIGHT);
 
         stage.setScene(scene);
