@@ -1,4 +1,5 @@
 import Panes.TabPane;
+import database.Database;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
@@ -19,5 +20,6 @@ public class Main  extends Application {
         stage.setTitle("Movie Tracker");
         stage.setScene(scene);
         stage.show();
+        Database db = Database.getInstance();
     }
 }
