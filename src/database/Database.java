@@ -37,7 +37,6 @@ public class Database {
                 createTable(DBConst.TABLE_WATCHED_LIST, DBConst.CREATE_TABLE_WATCHED, connection);
                 createTable(DBConst.TABLE_WISH_LIST, DBConst.CREATE_TABLE_WISH_LIST, connection);
             } catch (Exception e) {
-                System.out.println("Tables can't be created");
                 e.printStackTrace();
             }
         }
@@ -64,5 +63,9 @@ public class Database {
             createTables.execute(tableQuery);
             System.out.println(tableName + " table has been placed in the database.");
         }
+    }
+
+    public Connection getConnection() {
+        return connection;
     }
 }
