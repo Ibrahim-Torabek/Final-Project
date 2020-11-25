@@ -4,7 +4,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import tables.CompanyListTable;
 import tabs.AddMovieTab;
+import tabs.CompanyList;
 import tabs.DeleteMovieTab;
 import tabs.StatsTab;
 
@@ -24,6 +26,9 @@ public class Main  extends Application {
         stage.setScene(scene);
         stage.setTitle("Movie Tracker");
         stage.show();
-        Database db = Database.getInstance();
+        //Database db = Database.getInstance();
+//        CompanyListTable companyListTable = new CompanyListTable();
+//        companyListTable.getAllCompanies();
+//        companyListTable.getCompany(3);
     }
 }
