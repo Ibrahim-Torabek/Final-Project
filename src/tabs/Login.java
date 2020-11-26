@@ -63,6 +63,8 @@ public class Login extends Tab {
 
                 if(user.isAdmin()) {
                     MainMenu.getInstance().getInsertMenu().setDisable(false);
+                } else {
+                    MainMenu.getInstance().getInsertMenu().setDisable(true);
                 }
             }
         });

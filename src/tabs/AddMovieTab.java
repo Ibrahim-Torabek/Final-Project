@@ -19,13 +19,23 @@ import tables.MovieTable;
 public class AddMovieTab extends Tab {
 
     private static AddMovieTab tab;
+    private VBox root = new VBox();
+
+    // Declared all input fields as attributes for refresh.
+    private TextField title = new TextField();
+    private TextField director = new TextField();
+    private ComboBox<CompanyList> companyComnbo = new ComboBox<>();
+    private TextField year = new TextField();
+    private TextField length = new TextField();
+    private TextField rating = new TextField();
+    private TextField genre = new TextField();
 
     private AddMovieTab() {
         this.setText("Add Movie");
 
-        CompanyListTable companyTable = new CompanyListTable();
 
-        VBox root = new VBox();
+
+
         HBox hBox = new HBox();
         Font font = Font.font("Times New Roman",20);
 
@@ -49,16 +59,8 @@ public class AddMovieTab extends Tab {
 
 
         // Initial all data fields
-        TextField title = new TextField();
-        TextField director = new TextField();
-        ComboBox<CompanyList> companyComnbo = new ComboBox<>();
-        companyComnbo.setItems(
-                FXCollections.observableArrayList(companyTable.getAllCompanies())
-        );
-        TextField year = new TextField();
-        TextField length = new TextField();
-        TextField rating = new TextField();
-        TextField genre = new TextField();
+        refreshTab();
+
         gridPane.add(title,1,0);
         gridPane.add(director,1,1);
         gridPane.add(companyComnbo,1,2);
@@ -81,6 +83,9 @@ public class AddMovieTab extends Tab {
             MovieTable movieTable = new MovieTable();
             movieTable.insertMovie(movie);
             MovieList.getInstance().refreshTable();
+            refreshTab();
+
+
 
         });
         gridPane.add(addButton,1,7);
@@ -102,5 +107,23 @@ public class AddMovieTab extends Tab {
             tab = new AddMovieTab();
         }
         return tab;
+    }
+
+    private void refreshTab(){
+//        tab = new AddMovieTab();
+//        this.setContent(root);
+        CompanyListTable companyTable = new CompanyListTable();
+
+        title.setText("");
+        director.setText("");
+        companyComnbo.setItems(null);
+        year.setText("");
+        length.setText("");
+        rating.setText("");
+        genre.setText("");
+        companyComnbo.setItems(
+                FXCollections.observableArrayList(companyTable.getAllCompanies())
+        );
+
     }
 }
