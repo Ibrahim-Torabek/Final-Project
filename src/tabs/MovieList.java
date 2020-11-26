@@ -20,11 +20,13 @@ public class MovieList extends Tab {
     private String userName = "";
     private TextField tabTitle;
 
+    private TableView tableView = new TableView();
+
     private MovieList() {
         super("Movie List");
         BorderPane root = new BorderPane();
 
-        TableView tableView = new TableView();
+
 
         TableColumn<DisplayMovie, String> columnMovieTitle = new TableColumn<>("Movie Title");
         columnMovieTitle.setCellValueFactory(
@@ -93,6 +95,12 @@ public class MovieList extends Tab {
             userName = User.getInstance().getFullName();
             tabTitle.setText(userName + " you can manage movies now.");
         }
+    }
+
+    public void refreshTable(){
+        MovieTable movieTable = new MovieTable();
+        tableView.getItems().clear();
+        tableView.getItems().addAll(movieTable.prettyDisplayAll());
     }
 
 }

@@ -27,6 +27,6 @@ public class CompanyList {
 
     @Override
     public String toString() {
-        return companyName;
+        return this.companyName;
     }
 }

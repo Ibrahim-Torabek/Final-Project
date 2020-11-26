@@ -77,6 +77,25 @@ public class MovieTable implements MovieDAO {
         return null;
     }
 
+    @Override
+    public void insertMovie(Movie movie) {
+        String query = "INSERT INTO " + DBConst.TABLE_MOVIE +" VALUES (0, '" +
+                movie.getMovieTitle() + "', '" +
+                movie.getDirector() + "', " +
+                movie.getProductionCompany() + ", " +
+                movie.getReleaseYear() + ", " +
+                movie.getLengthMinutes() + ", '" +
+                movie.getRating() + "', '" +
+                movie.getGenre() + "')";
+
+        System.out.println(query);
+        try {
+            db.getConnection().createStatement().execute(query);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
     public ArrayList<DisplayMovie> prettyDisplayAll(){
         ArrayList<DisplayMovie> displayMovies = new ArrayList<>();
 

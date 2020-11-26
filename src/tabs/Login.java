@@ -21,7 +21,7 @@ public class Login extends Tab {
 
         VBox root = new VBox();
         HBox hBox = new HBox();
-        Font font = Font.font("Times New Roman",30);
+        Font font = Font.font("Times New Roman",20);
 
         GridPane gridPane = new GridPane();
         Label userNameLabel = new Label("User Name:");

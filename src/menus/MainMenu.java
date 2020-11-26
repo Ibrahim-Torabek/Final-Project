@@ -1,9 +1,11 @@
 package menus;
 
 
+import Panes.TabPane;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
+import tabs.AddMovieTab;
 
 public class MainMenu extends MenuBar {
     private static MainMenu menu;
@@ -30,6 +32,13 @@ public class MainMenu extends MenuBar {
         // Functionality Menu Items
         exit.setOnAction( e -> {
             System.exit(0);
+        });
+
+        insertMovie.setOnAction(e -> {
+            TabPane tabPane = TabPane.getInstance();
+            tabPane.getTabs().add(AddMovieTab.getInstance());
+            tabPane.getSelectionModel().select(AddMovieTab.getInstance());
+
         });
 
         fileMenu.getItems().addAll(exit);
