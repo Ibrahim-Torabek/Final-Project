@@ -9,6 +9,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import menus.MainMenu;
 import pojo.User;
 
 public class Login extends Tab {
@@ -55,8 +56,14 @@ public class Login extends Tab {
                 errorMsg.setFill(Color.RED);
                 errorMsg.setText("Cannot Login...");
             } else {
+                User user = User.getInstance();
                 errorMsg.setFill(Color.BLUE);
-                errorMsg.setText("Welcome " + User.getInstance().getFullName());
+                errorMsg.setText("Welcome " + user.getFullName());
+                MovieList.getInstance().refreshUserName();
+
+                if(user.isAdmin()) {
+                    MainMenu.getInstance().getInsertMenu().setDisable(false);
+                }
             }
         });
 
