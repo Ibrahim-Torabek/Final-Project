@@ -55,7 +55,7 @@ public class DBConst {
     //create Login Table
     public static final String CREATE_TABLE_LOGIN = "CREATE TABLE " + TABLE_LOGIN + "(" +
                                                     LOGIN_COLUMN_ID + " int NOT NULL AUTO_INCREMENT, "
-                                                    + LOGIN_COLUMN_NAME + " VARCHAR(30), " +
+                                                    + LOGIN_COLUMN_NAME + " VARCHAR(30) NOT NULL UNIQUE, " +
                                                     LOGIN_COLUMN_PASSWORD + " VARCHAR(50), " +
                                                     "PRIMARY KEY(" + LOGIN_COLUMN_ID + "))";
 

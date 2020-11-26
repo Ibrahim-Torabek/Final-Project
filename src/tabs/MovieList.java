@@ -11,18 +11,22 @@ import javafx.scene.text.Font;
 import pojo.CompanyList;
 import pojo.DisplayMovie;
 import pojo.Movie;
+import pojo.User;
 import tables.CompanyListTable;
 import tables.MovieTable;
 
 public class MovieList extends Tab {
     private static MovieList tab;
+    private String userName = "";
+    private TextField tabTitle;
 
+    private TableView tableView = new TableView();
 
     private MovieList() {
         super("Movie List");
         BorderPane root = new BorderPane();
 
-        TableView tableView = new TableView();
+
 
         TableColumn<DisplayMovie, String> columnMovieTitle = new TableColumn<>("Movie Title");
         columnMovieTitle.setCellValueFactory(
@@ -68,7 +72,7 @@ public class MovieList extends Tab {
         tableView.getItems().addAll(new MovieTable().prettyDisplayAll());
 
 
-        TextField tabTitle = new TextField("Welcome to Movie Tab...");
+        tabTitle = new TextField("Welcome to Movie Tab...");
         tabTitle.setFont(Font.font("Times New Roman", 30));
 
         root.setTop(tabTitle);
@@ -84,6 +88,19 @@ public class MovieList extends Tab {
         }
 
         return tab;
+    }
+
+    public void refreshUserName(){
+        if(User.getInstance() != null){
+            userName = User.getInstance().getFullName();
+            tabTitle.setText(userName + " you can manage movies now.");
+        }
+    }
+
+    public void refreshTable(){
+        MovieTable movieTable = new MovieTable();
+        tableView.getItems().clear();
+        tableView.getItems().addAll(movieTable.prettyDisplayAll());
     }
 
 }

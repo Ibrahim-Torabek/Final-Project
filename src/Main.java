@@ -4,6 +4,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import menus.MainMenu;
+import pojo.User;
 import tables.CompanyListTable;
 import tabs.AddMovieTab;
 import tabs.CompanyList;
@@ -21,14 +23,16 @@ public class Main  extends Application {
 
         BorderPane root = new BorderPane();
 
+        MainMenu menu = MainMenu.getInstance();
+        root.setTop(menu);
+
+
         root.setCenter(Panes.TabPane.getInstance());
         Scene scene = new Scene(root,Const.SCREEN_WIDTH,Const.SCREEN_HEIGHT);
         stage.setScene(scene);
         stage.setTitle("Movie Tracker");
         stage.show();
-        //Database db = Database.getInstance();
-//        CompanyListTable companyListTable = new CompanyListTable();
-//        companyListTable.getAllCompanies();
-//        companyListTable.getCompany(3);
+
+
     }
 }
