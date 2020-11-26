@@ -6,7 +6,10 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.scene.text.Text;
+import pojo.User;
 
 public class Login extends Tab {
     private static Login tab;
@@ -30,10 +33,13 @@ public class Login extends Tab {
         PasswordField password = new PasswordField();
         password.setFont(font);
 
+        Text errorMsg = new Text("");
+
         gridPane.add(userNameLabel, 0 ,0);
         gridPane.add(userName, 1,0);
         gridPane.add(passwordLabel, 0,1);
         gridPane.add(password, 1,1);
+        gridPane.add(errorMsg,1,3);
 
         gridPane.setAlignment(Pos.BASELINE_RIGHT);
         gridPane.setVgap(15);
@@ -42,6 +48,17 @@ public class Login extends Tab {
         Button loginButton = new Button("Login");
         loginButton.setFont(font);
         gridPane.add(loginButton, 1,2);
+
+        loginButton.setOnAction( e -> {
+            tables.Login login = new tables.Login(userName.getText(),password.getText());
+            if(User.getInstance() == null){
+                errorMsg.setFill(Color.RED);
+                errorMsg.setText("Cannot Login...");
+            } else {
+                errorMsg.setFill(Color.BLUE);
+                errorMsg.setText("Welcome " + User.getInstance().getFullName());
+            }
+        });
 
         hBox.getChildren().add(gridPane);
         hBox.setAlignment(Pos.CENTER);

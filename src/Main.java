@@ -32,11 +32,11 @@ public class Main  extends Application {
 //        companyListTable.getAllCompanies();
 //        companyListTable.getCompany(3);
         //User user = User.getInstance().getFullName();
-        User.setInstance(1);
-        User user = User.getInstance();
-        if(user != null){
-            System.out.println(user.getFullName());
-        }
+//        User.setInstance(1);
+//        User user = User.getInstance();
+//        if(user != null){
+//            System.out.println(user.getFullName());
+//        }
 
     }
 }
