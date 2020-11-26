@@ -30,12 +30,12 @@ public class Database {
             }
             //create tables
             try {
-                createTable(DBConst.TABLE_COMPANY, DBConst.CREATE_TABLE_COMPANY, connection);
-                createTable(DBConst.TABLE_LOGIN, DBConst.CREATE_TABLE_LOGIN, connection);
-                createTable(DBConst.TABLE_USER, DBConst.CREATE_TABLE_USER, connection);
-                createTable(DBConst.TABLE_MOVIE, DBConst.CREATE_TABLE_MOVIE, connection);
-                createTable(DBConst.TABLE_WATCHED_LIST, DBConst.CREATE_TABLE_WATCHED, connection);
-                createTable(DBConst.TABLE_WISH_LIST, DBConst.CREATE_TABLE_WISH_LIST, connection);
+//                createTable(DBConst.TABLE_COMPANY, DBConst.CREATE_TABLE_COMPANY, connection);
+//                createTable(DBConst.TABLE_LOGIN, DBConst.CREATE_TABLE_LOGIN, connection);
+//                createTable(DBConst.TABLE_USER, DBConst.CREATE_TABLE_USER, connection);
+//                createTable(DBConst.TABLE_MOVIE, DBConst.CREATE_TABLE_MOVIE, connection);
+//                createTable(DBConst.TABLE_WATCHED_LIST, DBConst.CREATE_TABLE_WATCHED, connection);
+//                createTable(DBConst.TABLE_WISH_LIST, DBConst.CREATE_TABLE_WISH_LIST, connection);
             } catch (Exception e) {
                 e.printStackTrace();
             }

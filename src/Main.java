@@ -4,6 +4,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import pojo.User;
 import tables.CompanyListTable;
 import tabs.AddMovieTab;
 import tabs.CompanyList;
@@ -30,5 +31,12 @@ public class Main  extends Application {
 //        CompanyListTable companyListTable = new CompanyListTable();
 //        companyListTable.getAllCompanies();
 //        companyListTable.getCompany(3);
+        //User user = User.getInstance().getFullName();
+        User.setInstance(1);
+        User user = User.getInstance();
+        if(user != null){
+            System.out.println(user.getFullName());
+        }
+
     }
 }
