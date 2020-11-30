@@ -1,5 +1,7 @@
 package database;
 
+import tasks.CreateDatabases;
+
 import java.sql.*;
 
 public class Database {
@@ -36,6 +38,10 @@ public class Database {
 //                createTable(DBConst.TABLE_MOVIE, DBConst.CREATE_TABLE_MOVIE, connection);
 //                createTable(DBConst.TABLE_WATCHED_LIST, DBConst.CREATE_TABLE_WATCHED, connection);
 //                createTable(DBConst.TABLE_WISH_LIST, DBConst.CREATE_TABLE_WISH_LIST, connection);
+
+                Thread createDatabases = new Thread(new CreateDatabases());
+                createDatabases.start();
+
             } catch (Exception e) {
                 e.printStackTrace();
             }
