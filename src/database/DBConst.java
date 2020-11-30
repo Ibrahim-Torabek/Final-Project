@@ -88,7 +88,7 @@ public class DBConst {
                                                     + WATCHED_LIST_COLUMN_USER_ID + " int NOT NULL, "
                                                     + WATCHED_LIST_COLUMN_MOVIE_ID + " int NOT NULL, "
                                                     + "FOREIGN KEY (" + WATCHED_LIST_COLUMN_USER_ID + ")"
-                                                    + " REFERENCES " + TABLE_USER + "(" + USER_COLUMN_ID + "),"
+                                                    + " REFERENCES " + TABLE_USER + "(" + USER_COLUMN_ID + "), "
                                                     + "FOREIGN KEY (" + WATCHED_LIST_COLUMN_MOVIE_ID + ")"
                                                     + " REFERENCES " + TABLE_MOVIE + "(" + MOVIE_COLUMN_ID + "))";
 
