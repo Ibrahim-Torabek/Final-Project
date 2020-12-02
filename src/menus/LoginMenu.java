@@ -50,6 +50,7 @@ public class LoginMenu extends Menu {
     }
 
     public void refreshMenu(){
+
         if(User.getInstance() != null){
             loginMenu.setDisable(true);
             logoutMenu.setDisable((false));

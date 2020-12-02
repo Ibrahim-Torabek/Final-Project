@@ -14,16 +14,18 @@ public class MainMenu extends MenuBar {
     // Menus
     private FileMenu fileMenu;
     private InsertMenu insertMenu;
+    private TabsMenu tabsMenu;
     private LoginMenu loginMenu;
 
     private MainMenu()  {
         // Initial Menus
         fileMenu = new FileMenu();
         insertMenu = new InsertMenu();
+        tabsMenu = new TabsMenu();
         loginMenu = new LoginMenu();
 
 
-        this.getMenus().addAll(fileMenu,insertMenu,loginMenu);
+        this.getMenus().addAll(fileMenu,insertMenu,tabsMenu, loginMenu);
 
     }
 
