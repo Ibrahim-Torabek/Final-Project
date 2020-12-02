@@ -5,13 +5,13 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import pojo.CompanyList;
 import tables.CompanyListTable;
+import tabs.CompanyListTab;
 
 
-public class AddCompany extends VBox {
+public class AddCompany extends HBox {
     public AddCompany() {
         Text companyName = new Text("Company Name:");
         TextField comapny = new TextField();
@@ -25,7 +25,7 @@ public class AddCompany extends VBox {
 
             CompanyListTable table = new CompanyListTable();
             table.insertCompany(companyList);
-            tabs.CompanyList.getInstance().refreshTable();
+            CompanyListTab.getInstance().refreshTable();
         });
 
         this.getChildren().addAll(companyName,comapny,addButton);

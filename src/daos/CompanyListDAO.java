@@ -8,4 +8,5 @@ public interface CompanyListDAO {
     public ArrayList<CompanyList> getAllCompanies();
     public CompanyList getCompany(int id);
     public void insertCompany(CompanyList company);
+    public void deleteCompany(int id);
 }

@@ -74,7 +74,19 @@ public class CompanyListTable implements CompanyListDAO {
         }
     }
 
+    @Override
+    public void deleteCompany(int id) {
+        String query = "DELETE FROM " +DBConst.TABLE_COMPANY + " WHERE " +
+                DBConst.COMPANY_COLUMN_ID + " = " + id;
 
+        try{
+            db.getConnection().createStatement().execute(query);
+        } catch (SQLException throwables) {
+            System.out.println(query);
+            throwables.printStackTrace();
+        }
+
+    }
 
 
 }
