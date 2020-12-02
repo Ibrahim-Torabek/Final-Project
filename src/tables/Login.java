@@ -1,6 +1,5 @@
 package tables;
 
-import daos.LoginDAO;
 import database.DBConst;
 import database.Database;
 import pojo.User;
@@ -24,7 +23,7 @@ public class Login {
             ResultSet resultSet = statement.executeQuery(query);
 
             if(resultSet.next()){
-                User.setInstance(resultSet.getInt(DBConst.LOGIN_COLUMN_ID));
+                User.login(resultSet.getInt(DBConst.LOGIN_COLUMN_ID));
 
             }
         } catch (SQLException throwables) {
