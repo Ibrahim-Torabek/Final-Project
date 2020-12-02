@@ -57,4 +57,24 @@ public class CompanyListTable implements CompanyListDAO {
 
         return null;
     }
+
+    @Override
+    public void insertCompany(CompanyList company) {
+        String query = "INSERT INTO " + DBConst.TABLE_COMPANY +
+                " VALUES (0, '" +
+                company.getCompanyName() + "')";
+
+        //query = "INSERT INTO company_list VALUES (NULL, 'Hello')";
+
+        try{
+            db.getConnection().createStatement().execute(query);
+        } catch (SQLException throwables) {
+            System.out.println(query);
+            throwables.printStackTrace();
+        }
+    }
+
+
+
+
 }

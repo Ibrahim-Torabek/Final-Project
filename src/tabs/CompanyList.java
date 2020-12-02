@@ -1,11 +1,15 @@
 package tabs;
 
+import Panes.AddCompany;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.geometry.Pos;
+import javafx.scene.control.Button;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.BorderPane;
 import tables.CompanyListTable;
+import tables.MovieTable;
 
 public class CompanyList extends Tab {
     private static CompanyList tab;
@@ -15,6 +19,7 @@ public class CompanyList extends Tab {
         super("Movie Companies List");
 
 
+        // Company List
         CompanyListTable companyListTable = new CompanyListTable();
         BorderPane root = new BorderPane();
 
@@ -32,7 +37,16 @@ public class CompanyList extends Tab {
 
         tableView.getColumns().addAll(columnId,columnCompanyName);
         tableView.getItems().addAll(companyListTable.getAllCompanies());
+
+        // Delete Company Button
+        Button deleteCompany = new Button("Delete Company");
+        deleteCompany.setOnAction(e -> {
+            System.out.println("Delete");
+        });
         root.setCenter(tableView);
+        root.setTop(new AddCompany());
+        root.setBottom(deleteCompany);
+        root.setAlignment(deleteCompany, Pos.CENTER);
 
         this.setContent(root);
 
@@ -44,5 +58,11 @@ public class CompanyList extends Tab {
         }
 
         return tab;
+    }
+
+    public void refreshTable(){
+        CompanyListTable movieTable = new CompanyListTable();
+        tableView.getItems().clear();
+        tableView.getItems().addAll(movieTable.getAllCompanies());
     }
 }
