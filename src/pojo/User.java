@@ -56,14 +56,16 @@ public class User {
         return isAdmin;
     }
 
-    public static void setInstance(int userLoginId){
-
+    public static void login(int userLoginId){
         user = new User(userLoginId);
-
     }
 
     public static User getInstance(){
         return user;
+    }
+
+    public void logout(){
+        user = null;
     }
 
 }

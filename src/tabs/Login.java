@@ -61,11 +61,7 @@ public class Login extends Tab {
                 errorMsg.setText("Welcome " + user.getFullName());
                 MovieList.getInstance().refreshUserName();
 
-                if(user.isAdmin()) {
-                    MainMenu.getInstance().getInsertMenu().setDisable(false);
-                } else {
-                    MainMenu.getInstance().getInsertMenu().setDisable(true);
-                }
+                MainMenu.getInstance().refreshMenus();
             }
         });
 
