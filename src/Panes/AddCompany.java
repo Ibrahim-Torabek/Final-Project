@@ -8,6 +8,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import pojo.CompanyList;
 import tables.CompanyListTable;
+import tabs.AddMovieTab;
 import tabs.CompanyListTab;
 
 
@@ -26,6 +27,7 @@ public class AddCompany extends HBox {
             CompanyListTable table = new CompanyListTable();
             table.insertCompany(companyList);
             CompanyListTab.getInstance().refreshTable();
+            AddMovieTab.getInstance().refreshCompany();
         });
 
         this.getChildren().addAll(companyName,comapny,addButton);

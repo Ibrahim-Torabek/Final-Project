@@ -46,6 +46,7 @@ public class CompanyListTab extends Tab {
             CompanyList company = (CompanyList) tableView.getSelectionModel().getSelectedItem();
             companyListTable.deleteCompany(company.getCompanyId());
             refreshTable();
+            AddMovieTab.getInstance().refreshCompany();
         });
         root.setCenter(tableView);
         root.setTop(new AddCompany());

@@ -4,17 +4,18 @@ import Panes.TabPane;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
 import tabs.AddMovieTab;
+import tabs.CompanyListTab;
 
 public class InsertMenu extends Menu {
     // Menu items
-    private MenuItem insertMovie;
+    //private MenuItem insertMovie;
 
     public InsertMenu() {
         super("Insert");
         this.setDisable(true);
 
 
-        insertMovie = new MenuItem("Insert Movie");
+        MenuItem insertMovie = new MenuItem("Insert Movie");
         insertMovie.setOnAction(e -> {
             TabPane tabPane = TabPane.getInstance();
             tabPane.getTabs().add(AddMovieTab.getInstance());
@@ -22,7 +23,15 @@ public class InsertMenu extends Menu {
 
         });
 
+        MenuItem insertCompany = new MenuItem("Insert Company");
+        insertCompany.setOnAction(e -> {
+            TabPane tabPane = TabPane.getInstance();
+            tabPane.getTabs().add(CompanyListTab.getInstance());
+            tabPane.getSelectionModel().select(CompanyListTab.getInstance());
 
-        this.getItems().addAll(insertMovie);
+        });
+
+
+        this.getItems().addAll(insertMovie,insertCompany);
     }
 }
