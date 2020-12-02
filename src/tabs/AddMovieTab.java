@@ -1,5 +1,6 @@
 package tabs;
 
+import Panes.TabPane;
 import javafx.collections.FXCollections;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -90,6 +91,15 @@ public class AddMovieTab extends Tab {
         });
         gridPane.add(addButton,1,7);
 
+        // Add Company List if does not exist
+        Button addCompany = new Button("Add Company");
+        addCompany.setOnAction(e -> {
+            TabPane tabPane = TabPane.getInstance();
+            tabPane.getTabs().add(CompanyListTab.getInstance());
+            tabPane.getSelectionModel().select(CompanyListTab.getInstance());
+        });
+        gridPane.add(addCompany,2,2);
+
         gridPane.setHgap(10);
         gridPane.setVgap(15);
         hBox.getChildren().add(gridPane);
@@ -124,6 +134,15 @@ public class AddMovieTab extends Tab {
         companyComnbo.setItems(
                 FXCollections.observableArrayList(companyTable.getAllCompanies())
         );
+    }
 
+    public void refreshCompany(){
+        CompanyListTable companyTable = new CompanyListTable();
+
+        companyComnbo.setItems(
+                FXCollections.observableArrayList(companyTable.getAllCompanies())
+        );
+
+        System.out.println("Refreshed");
     }
 }
