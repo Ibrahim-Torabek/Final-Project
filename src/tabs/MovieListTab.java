@@ -1,5 +1,8 @@
 package tabs;
 
+import Panes.BottomPane;
+import buttons.AddToWatchedList;
+import buttons.AddToWishList;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -20,6 +23,7 @@ public class MovieListTab extends Tab {
     private TextField tabTitle;
 
     private TableView tableView = new TableView();
+    private BottomPane bottomPane;
 
     Button addWatchedButton = new Button("Add to Watched List");
     Button addWishButton = new Button("Add to Wish List");
@@ -97,18 +101,23 @@ public class MovieListTab extends Tab {
             WatchedListTab.getInstance().refreshTable();
         });
 
-        HBox buttonBox = new HBox();
-        buttonBox.getChildren().addAll(addWishButton, addWatchedButton);
-        buttonBox.setSpacing(40);
-        buttonBox.setPadding(new Insets(20));
-        buttonBox.setAlignment(Pos.CENTER);
-        root.setBottom(buttonBox);
+//        HBox buttonBox = new HBox();
+//        AddToWatchedList.getInstance().setTableView(tableView);
+//        AddToWishList.getInstance().setTableView(tableView);
+//        buttonBox.getChildren().addAll(AddToWishList.getInstance(), AddToWatchedList.getInstance(),new AddToWatchedList(tableView));
+//        buttonBox.setSpacing(40);
+//        buttonBox.setPadding(new Insets(20));
+//        buttonBox.setAlignment(Pos.CENTER);
+
+        bottomPane = new BottomPane(tableView);
+        root.setBottom(bottomPane);
 
 
         this.setContent(root);
 
         refreshButtons();
         MainMenu.getInstance().refreshMenus();
+
 
     }
 
@@ -134,12 +143,7 @@ public class MovieListTab extends Tab {
     }
 
     public void refreshButtons(){
-        if(User.getInstance() != null){
-            addWatchedButton.setDisable(false);
-            addWishButton.setDisable(false);
-        } else {
-            addWatchedButton.setDisable(true);
-            addWishButton.setDisable(true);
-        }
+        bottomPane.refresh();
+
     }
 }
