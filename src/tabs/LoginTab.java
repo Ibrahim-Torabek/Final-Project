@@ -2,7 +2,6 @@ package tabs;
 
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -12,10 +11,10 @@ import javafx.scene.text.Text;
 import menus.MainMenu;
 import pojo.User;
 
-public class Login extends Tab {
-    private static Login tab;
+public class LoginTab extends Tab {
+    private static LoginTab tab;
 
-    private Login() {
+    private LoginTab() {
         super("Login");
 
 
@@ -59,7 +58,7 @@ public class Login extends Tab {
                 User user = User.getInstance();
                 errorMsg.setFill(Color.BLUE);
                 errorMsg.setText("Welcome " + user.getFullName());
-                MovieList.getInstance().refreshUserName();
+                MovieListTab.getInstance().refreshUserName();
 
                 MainMenu.getInstance().refreshMenus();
             }
@@ -75,9 +74,9 @@ public class Login extends Tab {
 
     }
 
-    public static Login getInstance(){
+    public static LoginTab getInstance(){
         if(tab == null){
-            tab = new Login();
+            tab = new LoginTab();
         }
 
         return tab;

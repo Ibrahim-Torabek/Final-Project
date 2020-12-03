@@ -1,15 +1,11 @@
 package menus;
 
 import Panes.TabPane;
-import javafx.event.ActionEvent;
-import javafx.event.Event;
-import javafx.event.EventHandler;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.input.MouseEvent;
 import pojo.User;
-import tabs.AddMovieTab;
-import tabs.Login;
+import tabs.LoginTab;
 
 
 public class LoginMenu extends Menu {
@@ -26,8 +22,8 @@ public class LoginMenu extends Menu {
 
         loginMenu.setOnAction(e -> {
             TabPane tabPane = TabPane.getInstance();
-            tabPane.getTabs().add(Login.getInstance());
-            tabPane.getSelectionModel().select(Login.getInstance());
+            tabPane.getTabs().add(LoginTab.getInstance());
+            tabPane.getSelectionModel().select(LoginTab.getInstance());
         });
 
         logoutMenu.setOnAction(e -> {

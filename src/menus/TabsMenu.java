@@ -3,10 +3,9 @@ package menus;
 import Panes.TabPane;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
-import tabs.AddMovieTab;
-import tabs.MovieList;
-import tabs.WatchedList;
-import tabs.WishList;
+import tabs.MovieListTab;
+import tabs.WatchedListTab;
+import tabs.WishListTab;
 
 public class TabsMenu extends Menu {
     private MenuItem watchedListMenu;
@@ -24,19 +23,19 @@ public class TabsMenu extends Menu {
 
         movieList.setOnAction(e -> {
             TabPane tabPane = TabPane.getInstance();
-            tabPane.getTabs().add(MovieList.getInstance());
-            tabPane.getSelectionModel().select(MovieList.getInstance());
+            tabPane.getTabs().add(MovieListTab.getInstance());
+            tabPane.getSelectionModel().select(MovieListTab.getInstance());
         });
 
         watchedListMenu.setOnAction(e -> {
             TabPane tabPane = TabPane.getInstance();
-            tabPane.getTabs().add(WatchedList.getInstance());
-            tabPane.getSelectionModel().select(WatchedList.getInstance());
+            tabPane.getTabs().add(WatchedListTab.getInstance());
+            tabPane.getSelectionModel().select(WatchedListTab.getInstance());
         });
         wishListMenu.setOnAction(e -> {
             TabPane tabPane = TabPane.getInstance();
-            tabPane.getTabs().add(WishList.getInstance());
-            tabPane.getSelectionModel().select(WishList.getInstance());
+            tabPane.getTabs().add(WishListTab.getInstance());
+            tabPane.getSelectionModel().select(WishListTab.getInstance());
         });
 
         this.getItems().addAll(movieList,watchedListMenu, wishListMenu);
