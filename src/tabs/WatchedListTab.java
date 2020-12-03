@@ -1,11 +1,15 @@
 package tabs;
 
+import buttons.AddToWatchedList;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
 import pojo.DisplayMovie;
 import pojo.User;
@@ -72,6 +76,14 @@ public class WatchedListTab extends Tab {
 
         // Show Table view in the border center
         root.setCenter(tableView);
+
+        HBox buttonBox = new HBox();
+        AddToWatchedList.getInstance().setTableView(tableView);
+        buttonBox.getChildren().addAll(AddToWatchedList.getInstance());
+        buttonBox.setSpacing(40);
+        buttonBox.setPadding(new Insets(20));
+        buttonBox.setAlignment(Pos.CENTER);
+        root.setBottom(buttonBox);
 
         this.setContent(root);
     }

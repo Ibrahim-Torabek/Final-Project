@@ -1,5 +1,6 @@
 package tabs;
 
+import buttons.AddToWatchedList;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -98,7 +99,8 @@ public class MovieListTab extends Tab {
         });
 
         HBox buttonBox = new HBox();
-        buttonBox.getChildren().addAll(addWishButton, addWatchedButton);
+        AddToWatchedList.getInstance().setTableView(tableView);
+        buttonBox.getChildren().addAll(addWishButton, AddToWatchedList.getInstance());
         buttonBox.setSpacing(40);
         buttonBox.setPadding(new Insets(20));
         buttonBox.setAlignment(Pos.CENTER);
@@ -135,10 +137,10 @@ public class MovieListTab extends Tab {
 
     public void refreshButtons(){
         if(User.getInstance() != null){
-            addWatchedButton.setDisable(false);
+            AddToWatchedList.getInstance().setDisable(false);
             addWishButton.setDisable(false);
         } else {
-            addWatchedButton.setDisable(true);
+            AddToWatchedList.getInstance().setDisable(true);
             addWishButton.setDisable(true);
         }
     }
