@@ -83,7 +83,7 @@ public class AddMovieTab extends Tab {
             );
             MovieTable movieTable = new MovieTable();
             movieTable.insertMovie(movie);
-            MovieList.getInstance().refreshTable();
+            MovieListTab.getInstance().refreshTable();
             refreshTab();
 
 

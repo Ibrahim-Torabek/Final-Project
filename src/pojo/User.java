@@ -52,6 +52,10 @@ public class User {
         return lastName;
     }
 
+    public int getUserId() {
+        return userId;
+    }
+
     public boolean isAdmin() {
         return isAdmin;
     }
