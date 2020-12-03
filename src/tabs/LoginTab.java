@@ -58,9 +58,12 @@ public class LoginTab extends Tab {
                 User user = User.getInstance();
                 errorMsg.setFill(Color.BLUE);
                 errorMsg.setText("Welcome " + user.getFullName());
-                MovieListTab.getInstance().refreshUserName();
 
+                // Refreshes
+                MovieListTab.getInstance().refreshUserName();
+                MovieListTab.getInstance().refreshButtons();
                 MainMenu.getInstance().refreshMenus();
+
             }
         });
 

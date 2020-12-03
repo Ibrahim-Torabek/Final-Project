@@ -20,6 +20,9 @@ public class MovieListTab extends Tab {
 
     private TableView tableView = new TableView();
 
+    Button addWatchedButton = new Button("Add to Watched List");
+    Button addWishButton = new Button("Add to Wish List");
+
     private MovieListTab() {
         super("Movie List");
 
@@ -79,8 +82,7 @@ public class MovieListTab extends Tab {
         root.setCenter(tableView);
 
         // Show "Add to Wishlist" and "Add to Watched List" buttons in the bottom of border pane
-        Button addWatchedButton = new Button("Add to Watched List");
-        Button addWishButton = new Button("Add to Wish List");
+
 
         addWatchedButton.setOnAction(e -> {
             DisplayMovie movie = (DisplayMovie) tableView.getSelectionModel().getSelectedItem();
@@ -91,6 +93,7 @@ public class MovieListTab extends Tab {
             );
             WatchedListTable watchedListTable = new WatchedListTable();
             watchedListTable.insertWatchedMovie(watchedMovie);
+            WatchedListTab.getInstance().refreshTable();
         });
 
         HBox buttonBox = new HBox();
@@ -102,6 +105,8 @@ public class MovieListTab extends Tab {
 
 
         this.setContent(root);
+
+        refreshButtons();
 
     }
 
@@ -126,5 +131,13 @@ public class MovieListTab extends Tab {
         tableView.getItems().addAll(movieTable.prettyDisplayAll());
     }
 
-
+    public void refreshButtons(){
+        if(User.getInstance() != null){
+            addWatchedButton.setDisable(false);
+            addWishButton.setDisable(false);
+        } else {
+            addWatchedButton.setDisable(true);
+            addWishButton.setDisable(true);
+        }
+    }
 }
