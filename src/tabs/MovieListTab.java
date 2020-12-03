@@ -7,6 +7,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
+import menus.MainMenu;
 import pojo.DisplayMovie;
 import pojo.User;
 import pojo.WatchedList;
@@ -107,6 +108,7 @@ public class MovieListTab extends Tab {
         this.setContent(root);
 
         refreshButtons();
+        MainMenu.getInstance().refreshMenus();
 
     }
 

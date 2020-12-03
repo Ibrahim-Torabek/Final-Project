@@ -22,7 +22,10 @@ public class LoginMenu extends Menu {
 
         loginMenu.setOnAction(e -> {
             TabPane tabPane = TabPane.getInstance();
-            tabPane.getTabs().add(LoginTab.getInstance());
+            if (!tabPane.getTabs().contains(LoginTab.getInstance())){
+                tabPane.getTabs().add(LoginTab.getInstance());
+            }
+
             tabPane.getSelectionModel().select(LoginTab.getInstance());
         });
 

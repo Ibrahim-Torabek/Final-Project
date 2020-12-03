@@ -23,23 +23,34 @@ public class TabsMenu extends Menu {
 
         movieList.setOnAction(e -> {
             TabPane tabPane = TabPane.getInstance();
-            tabPane.getTabs().add(MovieListTab.getInstance());
+            if(!tabPane.getTabs().contains(MovieListTab.getInstance()))
+                tabPane.getTabs().add(MovieListTab.getInstance());
             tabPane.getSelectionModel().select(MovieListTab.getInstance());
         });
 
         watchedListMenu.setOnAction(e -> {
             TabPane tabPane = TabPane.getInstance();
-            tabPane.getTabs().add(WatchedListTab.getInstance());
+            if(!tabPane.getTabs().contains(WatchedListTab.getInstance()))
+                tabPane.getTabs().add(WatchedListTab.getInstance());
             tabPane.getSelectionModel().select(WatchedListTab.getInstance());
         });
         wishListMenu.setOnAction(e -> {
             TabPane tabPane = TabPane.getInstance();
-            tabPane.getTabs().add(WishListTab.getInstance());
+            if(!tabPane.getTabs().contains(WishListTab.getInstance()))
+                tabPane.getTabs().add(WishListTab.getInstance());
             tabPane.getSelectionModel().select(WishListTab.getInstance());
         });
 
         this.getItems().addAll(movieList,watchedListMenu, wishListMenu);
 
 
+    }
+
+    public MenuItem getWatchedListMenu() {
+        return watchedListMenu;
+    }
+
+    public MenuItem getWishListMenu() {
+        return wishListMenu;
     }
 }
