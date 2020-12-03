@@ -9,12 +9,13 @@ import tables.WatchedListTable;
 import tabs.WatchedListTab;
 
 public class AddToWatchedList extends Button {
-    private static AddToWatchedList button;
+    //private static AddToWatchedList button;
     private TableView tableView;
 
-    private AddToWatchedList() {
+    public AddToWatchedList(TableView tableView){
         super("Add to Watched List");
 
+        this.tableView = tableView;
         this.setOnAction(e -> {
             DisplayMovie movie = (DisplayMovie) tableView.getSelectionModel().getSelectedItem();
             WatchedList watchedMovie = new WatchedList(
@@ -29,19 +30,4 @@ public class AddToWatchedList extends Button {
         });
     }
 
-    public static AddToWatchedList getInstance(){
-        if(button == null){
-            button = new AddToWatchedList();
-        }
-
-        return button;
-    }
-
-    public TableView getTableView() {
-        return tableView;
-    }
-
-    public void setTableView(TableView tableView) {
-        this.tableView = tableView;
-    }
 }

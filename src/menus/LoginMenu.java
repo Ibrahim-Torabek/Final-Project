@@ -5,6 +5,7 @@ import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.input.MouseEvent;
 import pojo.User;
+import tabs.AddMovieTab;
 import tabs.LoginTab;
 
 
@@ -25,13 +26,14 @@ public class LoginMenu extends Menu {
             if (!tabPane.getTabs().contains(LoginTab.getInstance())){
                 tabPane.getTabs().add(LoginTab.getInstance());
             }
-
             tabPane.getSelectionModel().select(LoginTab.getInstance());
         });
 
         logoutMenu.setOnAction(e -> {
             User.getInstance().logout();
             MainMenu.getInstance().refreshMenus();
+            TabPane.getInstance().refreshTabs();
+
         });
 
         this.getItems().addAll(loginMenu,logoutMenu);
