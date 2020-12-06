@@ -1,12 +1,9 @@
 package menus;
 
 
-import Panes.TabPane;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
 import pojo.User;
-import tabs.AddMovieTab;
 
 public class MainMenu extends MenuBar {
     private static MainMenu menu;
@@ -45,6 +42,8 @@ public class MainMenu extends MenuBar {
                 insertMenu.setDisable(true);
                 tabsMenu.getWatchedListMenu().setDisable(false);
                 tabsMenu.getWishListMenu().setDisable(false);
+                tabsMenu.getCompanyStats().setDisable(false);
+                tabsMenu.getWatchedStats().setDisable(false);
             }
         } else {
             insertMenu.setDisable(true);

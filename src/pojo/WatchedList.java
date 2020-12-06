@@ -34,4 +34,6 @@ public class WatchedList {
     public void setMovieId(int movieId) {
         this.movieId = movieId;
     }
+
+    public String toString(){ return this.movieId + " "; }
 }

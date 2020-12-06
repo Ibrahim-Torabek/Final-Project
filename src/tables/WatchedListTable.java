@@ -7,6 +7,7 @@ import pojo.DisplayMovie;
 import pojo.WatchedList;
 
 import javax.print.DocFlavor;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -94,5 +95,24 @@ public class WatchedListTable implements WatchedListDAO {
         }
 
         return displayMovies;
+    }
+
+    //get movie amount
+    public int getWatchedAmount(int user) {
+        int movieCount = -1;
+        try {
+            PreparedStatement getCount = db.getConnection()
+                    .prepareStatement("SELECT * FROM " + DBConst.TABLE_WATCHED_LIST +
+                                    " WHERE " + DBConst.WATCHED_LIST_COLUMN_USER_ID + " = "
+                                    + user ,
+                            ResultSet.TYPE_SCROLL_SENSITIVE,
+                            ResultSet.CONCUR_UPDATABLE);
+            ResultSet data = getCount.executeQuery();
+            data.last();
+            movieCount = data.getRow();
+        } catch(SQLException e) {
+            e.printStackTrace();
+        }
+        return movieCount;
     }
 }
