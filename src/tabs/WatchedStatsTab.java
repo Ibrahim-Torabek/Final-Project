@@ -40,9 +40,11 @@ public class WatchedStatsTab extends Tab {
         watchedPie.getData().clear();
         //create the pieChart data
         ArrayList<PieChart.Data> watchedPieData = new ArrayList<>();
-        watchedPieData.add(new PieChart.Data("All Movies", movieTable.getMovieAmount("1")));
+        int movieAmout = movieTable.getMovieAmount("1");
+        int watchedMovieAmout = watchedListTable.getWatchedAmount(2);
+        watchedPieData.add(new PieChart.Data("All Movies", movieAmout));
         watchedPieData.add(new PieChart.Data("Watched Movies",
-                watchedListTable.getWatchedAmount(2)));
+                movieAmout - watchedMovieAmout));
 
         //place ArrayList in the ObservableList to read
         ObservableList<PieChart.Data> watchedChartData =

@@ -110,6 +110,8 @@ public class MovieListTab extends Tab {
 //        buttonBox.setAlignment(Pos.CENTER);
 
         bottomPane = new BottomPane(tableView);
+        bottomPane.addButton(BottomPane.BUTTON_ADD_TO_WATCHED_LIST);
+        bottomPane.addButton(BottomPane.BUTTON_ADD_TO_WISH_LIST);
         root.setBottom(bottomPane);
 
 
