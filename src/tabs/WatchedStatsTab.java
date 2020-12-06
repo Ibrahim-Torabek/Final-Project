@@ -5,6 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.Tab;
 import javafx.scene.layout.BorderPane;
+import pojo.User;
 import tables.MovieTable;
 import tables.WatchedListTable;
 
@@ -23,6 +24,7 @@ public class WatchedStatsTab extends Tab {
         watchedPie = new PieChart();
         watchedPie.setTitle("Watched Movies");
         watchedPie.setLabelsVisible(true);
+        //watchedPie.set
         makeWatchedPie();
 
         //set pieCharts to the pane
@@ -41,10 +43,12 @@ public class WatchedStatsTab extends Tab {
         //create the pieChart data
         ArrayList<PieChart.Data> watchedPieData = new ArrayList<>();
         int movieAmout = movieTable.getMovieAmount("1");
-        int watchedMovieAmout = watchedListTable.getWatchedAmount(2);
-        watchedPieData.add(new PieChart.Data("All Movies", movieAmout));
+        int watchedMovieAmout = 0;
+        if(User.getInstance() != null)
+            watchedMovieAmout = watchedListTable.getWatchedAmount(User.getInstance().getUserId());
+        watchedPieData.add(new PieChart.Data("All Movies", movieAmout - watchedMovieAmout));
         watchedPieData.add(new PieChart.Data("Watched Movies",
-                movieAmout - watchedMovieAmout));
+                watchedMovieAmout));
 
         //place ArrayList in the ObservableList to read
         ObservableList<PieChart.Data> watchedChartData =
