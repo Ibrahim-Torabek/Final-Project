@@ -8,26 +8,29 @@ import javafx.scene.layout.BorderPane;
 import pojo.CompanyList;
 import tables.CompanyListTable;
 import tables.MovieTable;
+import tables.WatchedListTable;
 
 import java.util.ArrayList;
 
-public class StatsTab extends Tab {
+public class CompanyStatsTab extends Tab {
 
-    private static StatsTab tab;
+    private static CompanyStatsTab tab;
     private PieChart pieChart;
 
-
-    private StatsTab() {
-        this.setText("Statistics");
+    private CompanyStatsTab() {
+        this.setText("Movie Company Statistics");
         BorderPane pane = new BorderPane();
+        //pie chart for movie companies
         pieChart = new PieChart();
         pieChart.setTitle("Movie Companies");
         pieChart.setLabelsVisible(true);
         makePieChart();
+        //set pieCharts to the pane
         pane.setCenter(pieChart);
-        this.setContent(pane); //pieChart to the center
+        this.setContent(pane);
     }
 
+    //make movie companies pieChart
     public void makePieChart(){
        //access the database
         MovieTable movieTable = new MovieTable();
@@ -49,7 +52,6 @@ public class StatsTab extends Tab {
                         movieTable.getMovieAmount(company.getCompanyId())));
 
             }
-            System.out.println("movies are not here!");
         }
         //place ArrayList in the ObservableList to read
         ObservableList<PieChart.Data> chartData =
@@ -57,9 +59,10 @@ public class StatsTab extends Tab {
         //Populate the chart
         pieChart.setData(chartData);
     }
-    public static StatsTab getInstance() {
+
+    public static CompanyStatsTab getInstance() {
         if (tab == null) {
-            tab = new StatsTab();
+            tab = new CompanyStatsTab();
         }
         return tab;
     }

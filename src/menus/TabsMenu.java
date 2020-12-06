@@ -3,16 +3,14 @@ package menus;
 import Panes.TabPane;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
-import tabs.MovieListTab;
-import tabs.StatsTab;
-import tabs.WatchedListTab;
-import tabs.WishListTab;
+import tabs.*;
 
 public class TabsMenu extends Menu {
     private MenuItem watchedListMenu;
     private MenuItem wishListMenu;
     private MenuItem movieList;
-    private MenuItem stats;
+    private MenuItem companyStats;
+    private MenuItem watchedStats;
 
     public TabsMenu() {
         super("Tabs");
@@ -20,8 +18,8 @@ public class TabsMenu extends Menu {
         watchedListMenu = new MenuItem("Watched list");
         wishListMenu = new MenuItem("Wish list");
         movieList = new MenuItem("Movie List");
-        stats = new MenuItem("Statistics");
-
+        companyStats = new MenuItem("Movie Company Statistics");
+        watchedStats = new MenuItem("Watched Movie Statistics");
 
 
         movieList.setOnAction(e -> {
@@ -43,14 +41,21 @@ public class TabsMenu extends Menu {
                 tabPane.getTabs().add(WishListTab.getInstance());
             tabPane.getSelectionModel().select(WishListTab.getInstance());
         });
-        stats.setOnAction(e -> {
+        companyStats.setOnAction(e -> {
             TabPane tabPane = TabPane.getInstance();
-            if(!tabPane.getTabs().contains(StatsTab.getInstance()))
-                tabPane.getTabs().add(StatsTab.getInstance());
-            tabPane.getSelectionModel().select(StatsTab.getInstance());
+            if(!tabPane.getTabs().contains(CompanyStatsTab.getInstance()))
+                tabPane.getTabs().add(CompanyStatsTab.getInstance());
+            tabPane.getSelectionModel().select(CompanyStatsTab.getInstance());
+        });
+        watchedStats.setOnAction(e -> {
+            TabPane tabPane = TabPane.getInstance();
+            if(!tabPane.getTabs().contains(WatchedStatsTab.getInstance()))
+                tabPane.getTabs().add(WatchedStatsTab.getInstance());
+            tabPane.getSelectionModel().select(WatchedStatsTab.getInstance());
         });
 
-        this.getItems().addAll(movieList,watchedListMenu, wishListMenu, stats);
+        this.getItems().addAll(movieList,watchedListMenu, wishListMenu,
+                companyStats, watchedStats);
 
     }
 
@@ -62,7 +67,9 @@ public class TabsMenu extends Menu {
         return wishListMenu;
     }
 
-    public MenuItem getStats() {
-        return stats;
+    public MenuItem getCompanyStats() {
+        return companyStats;
     }
+
+    public MenuItem getWatchedStats() { return watchedStats; }
 }

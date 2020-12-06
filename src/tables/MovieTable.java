@@ -146,8 +146,27 @@ public class MovieTable implements MovieDAO {
         try {
             PreparedStatement getCount = db.getConnection()
                     .prepareStatement("SELECT * FROM " + DBConst.TABLE_MOVIE +
-                                    " WHERE " + DBConst.MOVIE_COLUMN_TITLE + " = '"
+                                    " WHERE " + DBConst.MOVIE_PRODUCTION_COMPANY + " = '"
                                     + movie + "'",
+                            ResultSet.TYPE_SCROLL_SENSITIVE,
+                            ResultSet.CONCUR_UPDATABLE);
+            ResultSet data = getCount.executeQuery();
+            data.last();
+            movieCount = data.getRow();
+        } catch(SQLException e) {
+            e.printStackTrace();
+        }
+        return movieCount;
+    }
+
+    //make movie count with condition to use in watchedList Table
+    public int getMovieAmount(String condition){
+        int movieCount = -1;
+        try {
+            PreparedStatement getCount = db.getConnection()
+                    .prepareStatement("SELECT * FROM " + DBConst.TABLE_MOVIE +
+                                    " WHERE " +
+                                    condition ,
                             ResultSet.TYPE_SCROLL_SENSITIVE,
                             ResultSet.CONCUR_UPDATABLE);
             ResultSet data = getCount.executeQuery();
