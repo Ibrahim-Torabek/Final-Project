@@ -60,8 +60,17 @@ public class WatchedListTable implements WatchedListDAO {
     }
 
     @Override
-    public void deleteWatchedMovie(int watchedId) {
+    public void deleteWatchedMovie(int watchedMovieId) {
+        String query = "DELETE FROM " + DBConst.TABLE_WATCHED_LIST +
+                " WHERE " + DBConst.WATCHED_LIST_COLUMN_MOVIE_ID +
+                " = " + watchedMovieId;
 
+        try{
+            db.getConnection().createStatement().execute(query);
+        } catch (SQLException throwables) {
+            System.out.println(query);
+            throwables.printStackTrace();
+        }
     }
 
     public ArrayList<DisplayMovie> prettyDisplay(int user_id){
@@ -102,7 +111,7 @@ public class WatchedListTable implements WatchedListDAO {
         int movieCount = -1;
         try {
             PreparedStatement getCount = db.getConnection()
-                    .prepareStatement("SELECT * FROM " + DBConst.TABLE_WATCHED_LIST +
+                    .prepareStatement("SELECT DISTINCT " + DBConst.WISH_LIST_COLUMN_MOVIE_ID + " FROM " + DBConst.TABLE_WATCHED_LIST +
                                     " WHERE " + DBConst.WATCHED_LIST_COLUMN_USER_ID + " = "
                                     + user ,
                             ResultSet.TYPE_SCROLL_SENSITIVE,

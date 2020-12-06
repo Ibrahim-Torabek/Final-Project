@@ -11,8 +11,7 @@ public class TabPane extends javafx.scene.control.TabPane {
     private static TabPane pane;
 
     private TabPane() {
-        this.getTabs().addAll(MovieListTab.getInstance(),
-                CompanyStatsTab.getInstance(), WatchedStatsTab.getInstance());
+        this.getTabs().addAll(MovieListTab.getInstance());
     }
 
      public static TabPane getInstance(){
@@ -28,11 +27,12 @@ public class TabPane extends javafx.scene.control.TabPane {
          tabToRemove.add(AddMovieTab.getInstance());
          tabToRemove.add(CompanyListTab.getInstance());
          tabToRemove.add(ManageUser.getInstance());
-
+         tabToRemove.add(WatchedListTab.getInstance());
+         tabToRemove.add(WishListTab.getInstance());
+         tabToRemove.add(WatchedStatsTab.getInstance());
 
         if (User.getInstance() == null){
-            tabToRemove.add(WatchedListTab.getInstance());
-            tabToRemove.add(WishListTab.getInstance());
+
             for (Tab tab :
                     tabToRemove) {
                 if (this.getTabs().contains(tab))

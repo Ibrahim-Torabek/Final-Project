@@ -44,11 +44,13 @@ public class MainMenu extends MenuBar {
                 tabsMenu.getWishListMenu().setDisable(false);
                 tabsMenu.getCompanyStats().setDisable(false);
                 tabsMenu.getWatchedStats().setDisable(false);
+                tabsMenu.getWatchedStats().setDisable(false);
             }
         } else {
             insertMenu.setDisable(true);
             tabsMenu.getWatchedListMenu().setDisable(true);
             tabsMenu.getWishListMenu().setDisable(true);
+            tabsMenu.getWatchedStats().setDisable(true);
         }
 
         loginMenu.refreshMenu();

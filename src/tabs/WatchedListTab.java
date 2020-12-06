@@ -1,22 +1,16 @@
 package tabs;
 
 import Panes.BottomPane;
-import buttons.AddToWatchedList;
-import buttons.AddToWishList;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.text.Font;
 import pojo.DisplayMovie;
 import pojo.User;
-import tables.MovieTable;
 import tables.WatchedListTable;
+
+import java.util.function.BinaryOperator;
 
 public class WatchedListTab extends Tab {
     private static WatchedListTab tab;
@@ -70,7 +64,8 @@ public class WatchedListTab extends Tab {
 
         // Set up Columns and Data
         tableView.getColumns().addAll(columnMovieTitle,columnDirector, columnCompany,columnYear,columnLength,columnRating,columnGenre);
-        tableView.getItems().addAll(new WatchedListTable().prettyDisplay(User.getInstance().getUserId()));
+        if(User.getInstance() != null)
+            tableView.getItems().addAll(new WatchedListTable().prettyDisplay(User.getInstance().getUserId()));
 
 
 
@@ -81,6 +76,8 @@ public class WatchedListTab extends Tab {
         root.setCenter(tableView);
 
         bottomPane = new BottomPane(tableView);
+        bottomPane.addButton(BottomPane.BUTTON_REMOVE_FROM_WATCHED_LIST);
+        bottomPane.addButton(BottomPane.BUTTON_ADD_TO_WISH_LIST);
         root.setBottom(bottomPane);
 
         this.setContent(root);
@@ -98,5 +95,6 @@ public class WatchedListTab extends Tab {
         WatchedListTable movieTable = new WatchedListTable();
         tableView.getItems().clear();
         tableView.getItems().addAll(movieTable.prettyDisplay(User.getInstance().getUserId()));
+        WatchedStatsTab.getInstance().makeWatchedPie();
     }
 }

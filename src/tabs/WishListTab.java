@@ -66,11 +66,14 @@ public class WishListTab extends Tab {
 
         // Set up Columns and Data
         tableView.getColumns().addAll(columnMovieTitle,columnDirector, columnCompany,columnYear,columnLength,columnRating,columnGenre);
-        tableView.getItems().addAll(new WishListTable().prettyDisplay(User.getInstance().getUserId()));
+        if(User.getInstance() != null)
+            tableView.getItems().addAll(new WishListTable().prettyDisplay(User.getInstance().getUserId()));
 
         root.setCenter(tableView);
 
         bottomPane = new BottomPane(tableView);
+        bottomPane.addButton(BottomPane.BUTTON_REMOVE_FROM_WISH_LIST);
+        bottomPane.addButton(BottomPane.BUTTON_ADD_TO_WATCHED_LIST);
         root.setBottom(bottomPane);
 
         this.setContent(root);

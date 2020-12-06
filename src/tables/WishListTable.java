@@ -59,8 +59,17 @@ public class WishListTable implements WishListDAO {
     }
 
     @Override
-    public void deleteWishMovie(int id) {
+    public void deleteWishMovie(int movieId) {
+        String query = "DELETE FROM " + DBConst.TABLE_WISH_LIST +
+                " WHERE " + DBConst.WISH_LIST_COLUMN_MOVIE_ID +
+                " = " + movieId;
 
+        try{
+            db.getConnection().createStatement().execute(query);
+        } catch (SQLException throwables) {
+            System.out.println(query);
+            throwables.printStackTrace();
+        }
     }
 
     public ArrayList<DisplayMovie> prettyDisplay(int user_id){
