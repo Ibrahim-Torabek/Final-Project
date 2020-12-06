@@ -41,7 +41,7 @@ public class LoginDBTab extends Tab {
         Text dbLocationText = new Text("Database Location:");
         Text dbNameText = new Text("Database Name:");
         Text dbUserText = new Text("Database User:");
-        Text dbPasswordText = new Text("Database Passwordr:");
+        Text dbPasswordText = new Text("Database Password:");
 
         gridPane.add(dbLocationText,0,0);
         gridPane.add(dbNameText,0,1);

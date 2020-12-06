@@ -17,7 +17,6 @@ public class LoginTab extends Tab {
     private LoginTab() {
         super("Login");
 
-
         VBox root = new VBox();
         HBox hBox = new HBox();
         Font font = Font.font("Times New Roman",20);
@@ -33,13 +32,18 @@ public class LoginTab extends Tab {
         PasswordField password = new PasswordField();
         password.setFont(font);
 
+        //the title
+        TextField loginTitle = new TextField("Log in to Manage Movies.");
+        loginTitle.setFont(Font.font("Times New Roman", 28));
+
         Text errorMsg = new Text("");
 
-        gridPane.add(userNameLabel, 0 ,0);
-        gridPane.add(userName, 1,0);
-        gridPane.add(passwordLabel, 0,1);
-        gridPane.add(password, 1,1);
-        gridPane.add(errorMsg,1,3);
+        gridPane.add(loginTitle, 0, 0, 2, 1);
+        gridPane.add(userNameLabel, 0,1);
+        gridPane.add(userName, 1,1);
+        gridPane.add(passwordLabel, 0,2);
+        gridPane.add(password,1,2);
+        gridPane.add(errorMsg,1,4, 2, 1);
 
         gridPane.setAlignment(Pos.BASELINE_RIGHT);
         gridPane.setVgap(15);
@@ -47,7 +51,7 @@ public class LoginTab extends Tab {
 
         Button loginButton = new Button("Login");
         loginButton.setFont(font);
-        gridPane.add(loginButton, 1,2);
+        gridPane.add(loginButton, 1,3);
 
         loginButton.setOnAction( e -> {
             tables.Login login = new tables.Login(userName.getText(),password.getText());
@@ -57,7 +61,8 @@ public class LoginTab extends Tab {
             } else {
                 User user = User.getInstance();
                 errorMsg.setFill(Color.BLUE);
-                errorMsg.setText("Welcome " + user.getFullName());
+                errorMsg.setText("Welcome " + user.getFullName() + ".\n Go to the Movie List tab.");
+                errorMsg.setFont(Font.font("Times New Roman", 30));
 
                 // Refreshes
                 MovieListTab.getInstance().refreshUserName();
@@ -67,10 +72,12 @@ public class LoginTab extends Tab {
             }
         });
 
+
         hBox.getChildren().add(gridPane);
         hBox.setAlignment(Pos.CENTER);
 
-        root.getChildren().addAll(hBox);
+        root.getChildren().add(hBox);
+
         root.setAlignment(Pos.CENTER);
 
         this.setContent(root);

@@ -30,7 +30,7 @@ public class Main  extends Application {
         root.setCenter(Panes.TabPane.getInstance());
         Scene scene = new Scene(root, Const.SCREEN_WIDTH, Const.SCREEN_HEIGHT);
         stage.setScene(scene);
-        stage.setTitle("Movie Tracker");
+        stage.setTitle("Movie Tracer");
         stage.show();
 
 

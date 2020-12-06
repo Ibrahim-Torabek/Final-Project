@@ -3,10 +3,13 @@ package menus;
 import Panes.TabPane;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.text.Font;
 import pojo.User;
 import tabs.AddMovieTab;
 import tabs.LoginTab;
+import tabs.LogoutTab;
 
 
 public class LoginMenu extends Menu {
@@ -21,6 +24,9 @@ public class LoginMenu extends Menu {
 
         logoutMenu.setDisable(true);
 
+//        TextField logoutTitle = new TextField("Thank you for using the Movie Tracker software.");
+//        logoutTitle.setFont(Font.font("Times New Roman", 28));
+
         loginMenu.setOnAction(e -> {
             TabPane tabPane = TabPane.getInstance();
             if (!tabPane.getTabs().contains(LoginTab.getInstance())){
@@ -30,9 +36,12 @@ public class LoginMenu extends Menu {
         });
 
         logoutMenu.setOnAction(e -> {
+            TabPane tabPane = TabPane.getInstance();
             User.getInstance().logout();
             MainMenu.getInstance().refreshMenus();
             TabPane.getInstance().refreshTabs();
+            tabPane.getSelectionModel().select(LogoutTab.getInstance());
+
 
         });
 
