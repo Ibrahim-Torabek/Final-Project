@@ -8,6 +8,7 @@ import pojo.CompanyList;
 import pojo.DisplayMovie;
 import pojo.Movie;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -96,6 +97,16 @@ public class MovieTable implements MovieDAO {
         }
     }
 
+    @Override
+    public void deleteMovie(Movie movie) {
+
+    }
+
+    @Override
+    public void createMovie(Movie movie) {
+
+    }
+
     public ArrayList<DisplayMovie> prettyDisplayAll(){
         ArrayList<DisplayMovie> displayMovies = new ArrayList<>();
 
@@ -128,4 +139,24 @@ public class MovieTable implements MovieDAO {
 
         return displayMovies;
     }
+
+    //get movie amount
+    public int getMovieAmount(int movie) {
+        int movieCount = -1;
+        try {
+            PreparedStatement getCount = db.getConnection()
+                    .prepareStatement("SELECT * FROM " + DBConst.TABLE_MOVIE +
+                                    " WHERE " + DBConst.MOVIE_COLUMN_TITLE + " = '"
+                                    + movie + "'",
+                            ResultSet.TYPE_SCROLL_SENSITIVE,
+                            ResultSet.CONCUR_UPDATABLE);
+            ResultSet data = getCount.executeQuery();
+            data.last();
+            movieCount = data.getRow();
+        } catch(SQLException e) {
+            e.printStackTrace();
+        }
+        return movieCount;
+    }
 }
+

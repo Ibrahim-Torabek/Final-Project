@@ -11,7 +11,8 @@ public class TabPane extends javafx.scene.control.TabPane {
     private static TabPane pane;
 
     private TabPane() {
-        this.getTabs().addAll(MovieListTab.getInstance());
+        this.getTabs().addAll(MovieListTab.getInstance(),
+                StatsTab.getInstance());
     }
 
      public static TabPane getInstance(){

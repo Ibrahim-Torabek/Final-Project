@@ -45,6 +45,7 @@ public class MainMenu extends MenuBar {
                 insertMenu.setDisable(true);
                 tabsMenu.getWatchedListMenu().setDisable(false);
                 tabsMenu.getWishListMenu().setDisable(false);
+                tabsMenu.getStats().setDisable(false);
             }
         } else {
             insertMenu.setDisable(true);

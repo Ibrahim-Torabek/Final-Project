@@ -15,13 +15,13 @@ import tabs.CompanyListTab;
 public class AddCompany extends HBox {
     public AddCompany() {
         Text companyName = new Text("Company Name:");
-        TextField comapny = new TextField();
+        TextField company = new TextField();
 
         Button addButton = new Button("Add Company");
         addButton.setOnAction(e -> {
             CompanyList companyList = new CompanyList(
                     0,
-                    comapny.getText()
+                    company.getText()
             );
 
             CompanyListTable table = new CompanyListTable();
@@ -30,7 +30,7 @@ public class AddCompany extends HBox {
             AddMovieTab.getInstance().refreshCompany();
         });
 
-        this.getChildren().addAll(companyName,comapny,addButton);
+        this.getChildren().addAll(companyName,company,addButton);
         this.setAlignment(Pos.CENTER);
         this.setSpacing(10);
         this.setPadding(new Insets(20));
