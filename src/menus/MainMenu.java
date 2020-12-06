@@ -59,4 +59,12 @@ public class MainMenu extends MenuBar {
     public Menu getInsertMenu() {
         return insertMenu;
     }
+
+    public TabsMenu getTabsMenu() {
+        return tabsMenu;
+    }
+
+    public LoginMenu getLoginMenu() {
+        return loginMenu;
+    }
 }
