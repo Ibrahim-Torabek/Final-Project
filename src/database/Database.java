@@ -1,5 +1,6 @@
 package database;
 
+import main.Main;
 import tasks.CreateDatabases;
 
 import java.sql.*;
@@ -23,22 +24,15 @@ public class Database {
             try {
                 //define driver to connect to the database
                 Class.forName("com.mysql.cj.jdbc.Driver");
-                connection = DriverManager.getConnection("jdbc:mysql://localhost/"
-                            + LogIntoDatabase.DB_NAME + "?serverTimezone=UTC",
-                            LogIntoDatabase.DB_USER, LogIntoDatabase.DB_PASSWORD);
+                connection = DriverManager.getConnection(Main.loginDB.getDbLocation()
+                            + Main.loginDB.getDbName() + "?serverTimezone=UTC",
+                            Main.loginDB.getDbUser(), Main.loginDB.getDbPassword());
                 System.out.println("Created connection.");
             } catch (Exception e) {
                 e.printStackTrace();
             }
             //create tables
             try {
-//                createTable(DBConst.TABLE_COMPANY, DBConst.CREATE_TABLE_COMPANY, connection);
-//                createTable(DBConst.TABLE_LOGIN, DBConst.CREATE_TABLE_LOGIN, connection);
-//                createTable(DBConst.TABLE_USER, DBConst.CREATE_TABLE_USER, connection);
-//                createTable(DBConst.TABLE_MOVIE, DBConst.CREATE_TABLE_MOVIE, connection);
-//                createTable(DBConst.TABLE_WATCHED_LIST, DBConst.CREATE_TABLE_WATCHED, connection);
-//                createTable(DBConst.TABLE_WISH_LIST, DBConst.CREATE_TABLE_WISH_LIST, connection);
-
                 Thread createDatabases = new Thread(new CreateDatabases());
                 createDatabases.start();
 

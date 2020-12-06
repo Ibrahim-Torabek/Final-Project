@@ -1,9 +1,13 @@
 package Panes;
 
+import database.LogIntoDatabase;
 import javafx.scene.control.Tab;
+import main.FileIO;
+import main.Main;
 import pojo.User;
 import tabs.*;
 
+import java.io.File;
 import java.util.ArrayList;
 
 public class TabPane extends javafx.scene.control.TabPane {
@@ -11,7 +15,20 @@ public class TabPane extends javafx.scene.control.TabPane {
     private static TabPane pane;
 
     private TabPane() {
-        this.getTabs().addAll(MovieListTab.getInstance());
+        //Main.loginDB = new LogIntoDatabase();
+
+        if(!FileIO.isFileExist()){
+            System.out.println("File not exist");
+            this.getTabs().addAll(LoginDBTab.getInstance());
+        }
+        else {
+            System.out.println("File Exist");
+            Main.loginDB = FileIO.readObject();
+
+            this.getTabs().addAll(MovieListTab.getInstance());
+        }
+
+        //
     }
 
      public static TabPane getInstance(){
@@ -46,5 +63,9 @@ public class TabPane extends javafx.scene.control.TabPane {
 
             }
         }
+     }
+
+     public static void clearInstance(){
+        pane = null;
      }
 }
