@@ -40,6 +40,9 @@ public class LoginMenu extends Menu {
             User.getInstance().logout();
             MainMenu.getInstance().refreshMenus();
             TabPane.getInstance().refreshTabs();
+            if (!tabPane.getTabs().contains(LogoutTab.getInstance())){
+                tabPane.getTabs().add(LogoutTab.getInstance());
+            }
             tabPane.getSelectionModel().select(LogoutTab.getInstance());
 
 

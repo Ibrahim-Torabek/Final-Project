@@ -26,7 +26,6 @@ public class Main  extends Application {
         MainMenu menu = MainMenu.getInstance();
         root.setTop(menu);
 
-
         root.setCenter(Panes.TabPane.getInstance());
         Scene scene = new Scene(root, Const.SCREEN_WIDTH, Const.SCREEN_HEIGHT);
         stage.setScene(scene);
