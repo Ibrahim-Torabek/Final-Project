@@ -33,8 +33,9 @@ public class LoginTab extends Tab {
         password.setFont(font);
 
         //the title
-        TextField loginTitle = new TextField("Log in to Manage Movies.");
-        loginTitle.setFont(Font.font("Times New Roman", 28));
+        TextField loginTitle = new TextField("Log into Movie Tracer");
+        loginTitle.setFont(Font.font("Times New Roman", 30));
+        loginTitle.setAlignment(Pos.CENTER);
 
         Text errorMsg = new Text("");
 

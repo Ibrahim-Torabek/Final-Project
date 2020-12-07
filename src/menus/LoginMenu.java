@@ -24,9 +24,6 @@ public class LoginMenu extends Menu {
 
         logoutMenu.setDisable(true);
 
-//        TextField logoutTitle = new TextField("Thank you for using the Movie Tracker software.");
-//        logoutTitle.setFont(Font.font("Times New Roman", 28));
-
         loginMenu.setOnAction(e -> {
             TabPane tabPane = TabPane.getInstance();
             if (!tabPane.getTabs().contains(LoginTab.getInstance())){
@@ -44,7 +41,6 @@ public class LoginMenu extends Menu {
                 tabPane.getTabs().add(LogoutTab.getInstance());
             }
             tabPane.getSelectionModel().select(LogoutTab.getInstance());
-
 
         });
 

@@ -78,8 +78,8 @@ public class MovieListTab extends Tab {
 
 
         tabTitle = new TextField("Welcome to Movie Tracer. " +
-                "Go to the Tab above to log in and manage the movies.");
-        tabTitle.setFont(Font.font("Times New Roman", 28));
+                "Go to the Log in/out tab above to log in and manage the movies.");
+        tabTitle.setFont(Font.font("Times New Roman", 26));
 
         // Show a title in border top
         root.setTop(tabTitle);
@@ -132,7 +132,7 @@ public class MovieListTab extends Tab {
     public void refreshUserName(){
         if(User.getInstance() != null){
             userName = User.getInstance().getFullName();
-            tabTitle.setText(userName + " you can manage movies now. Go to Tab Menu " +
+            tabTitle.setText(userName + " you can manage movies now. Go to Tabs Menu " +
                     "to see a table or statistics.");
         }
     }
