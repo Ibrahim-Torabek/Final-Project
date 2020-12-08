@@ -80,13 +80,9 @@ public class LoginTab extends Tab {
 
         hBox.getChildren().add(gridPane);
         hBox.setAlignment(Pos.CENTER);
-
         root.getChildren().add(hBox);
-
         root.setAlignment(Pos.CENTER);
-
         this.setContent(root);
-
     }
 
     public static LoginTab getInstance(){
