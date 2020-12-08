@@ -5,6 +5,22 @@ import tasks.CreateDatabases;
 
 import java.sql.*;
 
+/**
+ * <h1>Movie Tracer Program</h1>
+ * <h2>Java Project of MAD300 Course</h2>
+ * <p>This is singleton class for the Database connection.
+ * This class will run CreateDatabases multiThread class to create all databases for reduce
+ * the launch speed of the program</p>
+ *
+ * @author  Ibrahim Osman, Elena Polyakova
+ * @version 1.0
+ * @since   2020-11-20
+ * @see Database
+ * @see Connection
+ * @see Thread
+ * @see CreateDatabases
+ *
+ */
 public class Database {
     /**
      * class Database will use the Singleton design pattern:
@@ -49,21 +65,6 @@ public class Database {
         return instance;
     }
 
-    //create a table
-    public void createTable(String tableName, String tableQuery, Connection connection) throws SQLException {
-        Statement createTables;
-        DatabaseMetaData databaseMetaData = connection.getMetaData();
-        ResultSet resultSet = databaseMetaData.getTables(null, null, tableName,null);
-
-        //check if a table already exists
-        if (resultSet.next()) {
-            System.out.println(tableName + " table is already exists");
-        } else { //create a table
-            createTables = connection.createStatement();
-            createTables.execute(tableQuery);
-            System.out.println(tableName + " table has been placed in the database.");
-        }
-    }
 
     public Connection getConnection() {
         return connection;

@@ -8,10 +8,34 @@ import javafx.scene.control.TableView;
 import javafx.scene.layout.BorderPane;
 import pojo.DisplayMovie;
 import pojo.User;
+import tables.MovieTable;
 import tables.WatchedListTable;
 
 import java.util.function.BinaryOperator;
 
+
+/**
+ * <h1>Movie Tracer Program</h1>
+ * <h2>Java Project of MAD300 Course</h2>
+ * <p>This class is an extended class from Tab class to display the watched list in the database.
+ * This tab displays watched movies in a tableView by prettyDisplay, and the logged user can add any
+ * selected movie to the wish list or delete it. All buttons to be displayed in a bottomPane object.
+ *
+ * </p>
+ *
+ * @author  Ibrahim Osman, Elena Polyakova
+ * @version 1.0
+ * @since   2020-11-20
+ *
+ * @see Tab
+ * @see BorderPane
+ * @see MovieListTab
+ * @see TableView
+ * @see TableColumn
+ * @see BottomPane
+ * @see DisplayMovie
+ * @see WatchedListTable
+ */
 public class WatchedListTab extends Tab {
     private static WatchedListTab tab;
     private TableView tableView = new TableView();

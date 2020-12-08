@@ -3,8 +3,26 @@ package menus;
 
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
 import pojo.User;
 
+/**
+ * <h1>Movie Tracer Program</h1>
+ * <h2>Java Project of MAD300 Course</h2>
+ * <p>This class extends MenuBar class to manipulate menus . It has file, insert, tabs and login menus.
+ *
+ * This class also has refresh method to determine which menu should be disabled or enabled..</p>
+ *
+ * @author  Ibrahim Osman, Elena Polyakova
+ * @version 1.0
+ * @since   2020-11-20
+ *
+ * @see MenuBar
+ * @see FileMenu
+ * @see InsertMenu
+ * @see TabsMenu
+ * @see LoginMenu
+ */
 public class MainMenu extends MenuBar {
     private static MainMenu menu;
 

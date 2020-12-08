@@ -1,5 +1,19 @@
 package pojo;
 
+
+/**
+ * <h1>Movie Tracer Program</h1>
+ * <h2>Java Project of MAD300 Course</h2>
+ * <p>This class is a Plain Old Java Object class to deal with WatchedList Table in the database.
+ * </p>
+ *
+ * @author  Ibrahim Osman, Elena Polyakova
+ * @version 1.0
+ * @since   2020-11-20
+ *
+ * @see tables.WatchedListTable
+ *
+ */
 public class WatchedList {
     private int watchedId;
     private int userId;

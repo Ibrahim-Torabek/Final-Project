@@ -10,6 +10,25 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+
+/**
+ * <h1>Movie Tracer Program</h1>
+ * <h2>Java Project of MAD300 Course</h2>
+ * <p>This class is an implemented class from CompanyListDAO interface. This class
+ * maintain the CRUD operations of company_list table.
+ * </p>
+ *
+ * @author  Ibrahim Osman, Elena Polyakova
+ * @version 1.0
+ * @since   2020-11-20
+ *
+ * @see daos.CompanyListDAO
+ * @see Database
+ * @see Statement
+ * @see ResultSet
+ * @see CompanyList
+ *
+ */
 public class CompanyListTable implements CompanyListDAO {
     Database db = Database.getInstance();
     ArrayList<CompanyList> companies;

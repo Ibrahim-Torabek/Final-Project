@@ -3,7 +3,9 @@ package tabs;
 import Panes.TabPane;
 import database.LogIntoDatabase;
 import javafx.geometry.Pos;
+import javafx.scene.chart.PieChart;
 import javafx.scene.control.*;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -17,16 +19,36 @@ import menus.MainMenu;
 import pojo.Login;
 import pojo.User;
 import tables.LoginTable;
+import tables.MovieTable;
 import tables.UserTable;
+import tables.WatchedListTable;
 
 
+/**
+ * <h1>Movie Tracer Program</h1>
+ * <h2>Java Project of MAD300 Course</h2>
+ * <p>This class is an extended class from Tab class to setup database and set up an admin user.
+ * When the operator set up the the database, the system will create a LogIntoDatabase object and write it
+ * into login.dat file with FileIO class' static method.
+ * The operator only can set up an admin user after the connection of the database.
+ * </p>
+ *
+ * @author  Ibrahim Osman, Elena Polyakova
+ * @version 1.0
+ * @since   2020-11-20
+ *
+ * @see Tab
+ * @see BorderPane
+ * @see LogIntoDatabase
+ * @see User
+ * @see Login
+ * @see FileIO
+ *
+ */
 public class LoginDBTab extends Tab {
 
     private static LoginDBTab tab;
     private VBox root = new VBox();
-
-
-
 
     private LoginDBTab() {
         this.setText("Set Up Database");
@@ -58,9 +80,9 @@ public class LoginDBTab extends Tab {
 
 
         // Initial all data fields
-        TextField dbName = new TextField(LogIntoDatabase.DB_NAME);
-        TextField dbUser = new TextField(LogIntoDatabase.DB_USER);
-        TextField dbPassword = new TextField(LogIntoDatabase.DB_PASSWORD);
+        TextField dbName = new TextField();
+        TextField dbUser = new TextField();
+        TextField dbPassword = new TextField();
         TextField dbLocation = new TextField("jdbc:mysql://localhost/");
 
 

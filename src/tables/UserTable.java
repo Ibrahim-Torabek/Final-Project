@@ -3,6 +3,7 @@ package tables;
 import daos.UserDAO;
 import database.DBConst;
 import database.Database;
+import pojo.DisplayMovie;
 import pojo.Movie;
 import pojo.User;
 
@@ -11,6 +12,24 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+/**
+ * <h1>Movie Tracer Program</h1>
+ * <h2>Java Project of MAD300 Course</h2>
+ * <p>This class is an implemented class from UserDAO interface. This class
+ * maintain the CRUD operations of movie table in database.
+ * </p>
+ *
+ * @author  Ibrahim Osman, Elena Polyakova
+ * @version 1.0
+ * @since   2020-11-20
+ *
+ * @see daos.UserDAO
+ * @see Database
+ * @see Statement
+ * @see ResultSet
+ * @see User
+ *
+ */
 public class UserTable implements UserDAO {
     @Override
     public ArrayList<pojo.User> getAllUsers() {

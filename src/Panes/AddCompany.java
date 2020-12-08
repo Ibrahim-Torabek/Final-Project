@@ -3,6 +3,8 @@ package Panes;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
@@ -11,7 +13,18 @@ import tables.CompanyListTable;
 import tabs.AddMovieTab;
 import tabs.CompanyListTab;
 
-
+/**
+ * <h1>Movie Tracer Program</h1>
+ * <h2>Java Project of MAD300 Course</h2>
+ * <p>This class extends HBox class to add a movie company to the database. This class is used by AddMovieTab class.</p>
+ *
+ * @author  Ibrahim Osman, Elena Polyakova
+ * @version 1.0
+ * @since   2020-11-20
+ *
+ * @see HBox
+ * @see AddMovieTab
+ */
 public class AddCompany extends HBox {
     public AddCompany() {
         Text companyName = new Text("Company Name:");

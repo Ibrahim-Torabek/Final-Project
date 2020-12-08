@@ -2,12 +2,23 @@ package database;
 
 import java.io.Serializable;
 
+
+/**
+ * <h1>Movie Tracer Program</h1>
+ * <h2>Java Project of MAD300 Course</h2>
+ * <p>This is a class to save database connection information includes Database name
+ * , user and password. It also saves location. This class implements serializable
+ * so that can be saved into or read from login.dat file by FileIO class.</p>
+ *
+ * @author  Ibrahim Osman, Elena Polyakova
+ * @version 1.0
+ * @since   2020-11-20
+ *
+ * @see main.FileIO
+ * @see Serializable
+ */
 public class LogIntoDatabase implements Serializable {
 
-
-    public static final String DB_NAME = "epolyakovadb";
-    public static final String DB_USER = "epolyakova";
-    public static final String DB_PASSWORD = "q67q3q67q3pvm9lpvm9l";
 
     private String dbName;
     private String dbUser;
@@ -27,12 +38,6 @@ public class LogIntoDatabase implements Serializable {
         this.dbLocation = dbLocation;
     }
 
-    public LogIntoDatabase() {
-        this.dbName = DB_NAME;
-        this.dbUser = DB_USER;
-        this.dbPassword = DB_PASSWORD;
-        dbLocation = "jdbc:mysql://localhost/";
-    }
 
     public String getDbName() {
         return dbName;

@@ -3,10 +3,32 @@ package tabs;
 import javafx.geometry.Pos;
 import javafx.scene.control.Tab;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import menus.MainMenu;
+import pojo.User;
+import tables.LoginTable;
 
+
+/**
+ * <h1>Movie Tracer Program</h1>
+ * <h2>Java Project of MAD300 Course</h2>
+ * <p>This class is an extended class from Tab class to display a message to confirm that the user successfully
+ * logged out the system.
+ *
+ * </p>
+ *
+ * @author  Ibrahim Osman, Elena Polyakova
+ * @version 1.0
+ * @since   2020-11-20
+ *
+ * @see Tab
+ * @see BorderPane
+ * @see HBox
+ *
+ */
 public class LogoutTab extends Tab {
 
     public static LogoutTab tab;
