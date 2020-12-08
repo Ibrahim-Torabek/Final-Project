@@ -1,5 +1,6 @@
 package tables;
 
+import daos.LoginDAO;
 import database.DBConst;
 import database.Database;
 import pojo.User;
@@ -8,7 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class Login {
+public class Login implements LoginDAO {
 
     public Login(String loginName, String password) {
         Database db = Database.getInstance();
@@ -33,6 +34,16 @@ public class Login {
     }
 
     private void Login(){
+
+    }
+
+    @Override
+    public void Login(String loginName, String password) {
+
+    }
+
+    @Override
+    public void insert(String username, String password) {
 
     }
 }

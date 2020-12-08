@@ -13,6 +13,7 @@ import java.util.ArrayList;
 public class CompanyListTable implements CompanyListDAO {
     Database db = Database.getInstance();
     ArrayList<CompanyList> companies;
+
     @Override
     public ArrayList<CompanyList> getAllCompanies() {
         String query = "SELECT * FROM " + DBConst.TABLE_COMPANY;
