@@ -21,15 +21,18 @@ public class AddToWishList extends Button {
         this.tableView = tableView;
         this.setOnAction(e -> {
             DisplayMovie movie = (DisplayMovie) tableView.getSelectionModel().getSelectedItem();
-            WishList wishMovie = new WishList(
-                    0,
-                    User.getInstance().getUserId(),
-                    movie.getId()
-            );
-            WishListTable wishListTable = new WishListTable();
-            wishListTable.insertWishMovie(wishMovie);
-            WishListTab.getInstance().refreshTable();
-            System.out.println(movie.getMovieTitle());
+
+            if( movie != null) {
+                WishList wishMovie = new WishList(
+                        0,
+                        User.getInstance().getUserId(),
+                        movie.getId()
+                );
+                WishListTable wishListTable = new WishListTable();
+                wishListTable.insertWishMovie(wishMovie);
+                WishListTab.getInstance().refreshTable();
+                System.out.println(movie.getMovieTitle());
+            }
         });
     }
 

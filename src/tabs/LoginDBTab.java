@@ -14,6 +14,10 @@ import main.FileIO;
 import main.Main;
 import menus.LoginMenu;
 import menus.MainMenu;
+import pojo.Login;
+import pojo.User;
+import tables.LoginTable;
+import tables.UserTable;
 
 
 public class LoginDBTab extends Tab {
@@ -70,10 +74,10 @@ public class LoginDBTab extends Tab {
         databaseField.add(setDatabaseButton,1,7);
 
 
-        //  +++++++++++++++++++++++++  User setup  ++++++++++++++++++++++++++++++++++++++
+        //  +++++++++++++++++++++++++ Admin User setup  ++++++++++++++++++++++++++++++++++
         GridPane userField = new GridPane();
         // Initial all labels
-        Text setupUser = new Text("Please setup your user name:");
+        Text setupUser = new Text("Please setup admin user:");
         Text userNameLabel = new Text("User Name:");
         Text passwordLabel = new Text("Password:");
         Text firstNameLabel = new Text("First Name:");
@@ -135,6 +139,17 @@ public class LoginDBTab extends Tab {
         });
 
         setUserButton.setOnAction(e -> {
+            Login login = new Login(0, username.getText(),password.getText());
+            LoginTable loginTable = new LoginTable();
+            loginTable.insert(login);
+            int loginId = loginTable.login(login.getLoginName(),login.getPassword());
+            if(loginId != 0){
+                User user = new User(0, loginId,firstName.getText(),lastName.getText(),true);
+                UserTable userTable = new UserTable();
+                userTable.insertUser(user);
+                User.login(loginId);
+            }
+
             TabPane tabPane = TabPane.getInstance();
             if(!tabPane.getTabs().contains(MovieListTab.getInstance()))
                 tabPane.getTabs().add(MovieListTab.getInstance());

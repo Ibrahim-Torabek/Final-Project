@@ -1,6 +1,8 @@
 package daos;
 
+import pojo.Login;
+
 public interface LoginDAO {
-    public void Login(String loginName, String password);
-    public void insert(String username, String password);
+    public int login(String loginName, String password);
+    public void insert(Login login);
 }

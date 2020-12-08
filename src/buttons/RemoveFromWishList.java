@@ -18,11 +18,14 @@ public class RemoveFromWishList extends Button {
         this.tableView = tableView;
         this.setOnAction(e -> {
             DisplayMovie movie = (DisplayMovie) tableView.getSelectionModel().getSelectedItem();
-            WishListTable wishListTable = new WishListTable();
-            wishListTable.deleteWishMovie(movie.getId());
 
-            WishListTab.getInstance().refreshTable();
-            System.out.println(movie.getMovieTitle());
+            if(movie != null) {
+                WishListTable wishListTable = new WishListTable();
+                wishListTable.deleteWishMovie(movie.getId());
+
+                WishListTab.getInstance().refreshTable();
+                System.out.println(movie.getMovieTitle());
+            }
         });
     }
 }

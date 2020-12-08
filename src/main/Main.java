@@ -9,7 +9,9 @@ import menus.MainMenu;
 
 import java.security.PublicKey;
 
-
+/**
+ *
+ */
 public class Main  extends Application {
 
     public static LogIntoDatabase loginDB;

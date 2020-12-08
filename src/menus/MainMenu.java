@@ -36,15 +36,17 @@ public class MainMenu extends MenuBar {
 
     public void refreshMenus(){
         if(User.getInstance() != null) {
+            tabsMenu.getWatchedListMenu().setDisable(false);
+            tabsMenu.getWishListMenu().setDisable(false);
+            tabsMenu.getCompanyStats().setDisable(false);
+            tabsMenu.getWatchedStats().setDisable(false);
+            tabsMenu.getWatchedStats().setDisable(false);
+
             if (User.getInstance().isAdmin()) {
                 insertMenu.setDisable(false);
             } else {
                 insertMenu.setDisable(true);
-                tabsMenu.getWatchedListMenu().setDisable(false);
-                tabsMenu.getWishListMenu().setDisable(false);
-                tabsMenu.getCompanyStats().setDisable(false);
-                tabsMenu.getWatchedStats().setDisable(false);
-                tabsMenu.getWatchedStats().setDisable(false);
+
             }
         } else {
             insertMenu.setDisable(true);
