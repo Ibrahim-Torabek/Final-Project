@@ -1,12 +1,13 @@
 package daos;
 
 import pojo.Movie;
+import pojo.User;
 
 import java.util.ArrayList;
 
 public interface UserDAO {
-    public ArrayList<Movie> getAllUsers();
-    public Movie getUser(int id);
-    public void insertUser(Movie movie);
+    public ArrayList<User> getAllUsers();
+    public User getUser(int id);
+    public void insertUser(User user);
 
 }

@@ -2,6 +2,7 @@ package pojo;
 
 import database.DBConst;
 import database.Database;
+import tables.UserTable;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -18,26 +19,14 @@ public class User {
 
     private User(int loginId) {
 
-        Database db = Database.getInstance();
+    }
 
-        String query = "SELECT * FROM user where user_login_id = " + loginId;
-
-        try{
-            Statement statement = db.getConnection().createStatement();
-            ResultSet resultSet = statement.executeQuery(query);
-
-            if(resultSet.next()){
-                this.userId = resultSet.getInt(DBConst.USER_COLUMN_ID);
-                this.userLoginId = resultSet.getInt(DBConst.USER_COLUMN_LOGIN_ID);
-                this.firstName = resultSet.getString(DBConst.USER_COLUMN_FIRST_NAME);
-                this.lastName = resultSet.getString(DBConst.USER_COLUMN_LAST_NAME);
-                this.isAdmin = resultSet.getBoolean(DBConst.USER_COLUMN_IS_ADMIN);
-
-            }
-
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
+    public User(int userId, int userLoginId, String firstName, String lastName, boolean isAdmin) {
+        this.userId = userId;
+        this.userLoginId = userLoginId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.isAdmin = isAdmin;
     }
 
     public String getFullName(){
@@ -61,7 +50,9 @@ public class User {
     }
 
     public static void login(int userLoginId){
-        user = new User(userLoginId);
+        UserTable userTable = new UserTable();
+
+        user = userTable.getUser(userLoginId);
     }
 
     public static User getInstance(){
@@ -72,5 +63,36 @@ public class User {
         user = null;
     }
 
+    public static User getUser() {
+        return user;
+    }
+
+    public static void setUser(User user) {
+        User.user = user;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    public int getUserLoginId() {
+        return userLoginId;
+    }
+
+    public void setUserLoginId(int userLoginId) {
+        this.userLoginId = userLoginId;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setAdmin(boolean admin) {
+        isAdmin = admin;
+    }
 }
 

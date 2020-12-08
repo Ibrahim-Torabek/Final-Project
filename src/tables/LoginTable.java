@@ -1,16 +1,21 @@
 package tables;
 
+import daos.LoginDAO;
 import database.DBConst;
 import database.Database;
+import pojo.Login;
 import pojo.User;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class Login {
+public class LoginTable implements LoginDAO {
 
-    public Login(String loginName, String password) {
+
+
+    @Override
+    public int login(String loginName, String password) {
         Database db = Database.getInstance();
 
         String query = "SELECT " + DBConst.LOGIN_COLUMN_ID + " FROM " +
@@ -23,16 +28,27 @@ public class Login {
             ResultSet resultSet = statement.executeQuery(query);
 
             if(resultSet.next()){
-                User.login(resultSet.getInt(DBConst.LOGIN_COLUMN_ID));
-
+                return resultSet.getInt(DBConst.LOGIN_COLUMN_ID);
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-
+        return 0;
     }
 
-    private void Login(){
+    @Override
+    public void insert(Login login) {
+        Database db = Database.getInstance();
+        String query = "INSERT INTO " + DBConst.TABLE_LOGIN +
+                " VALUES (0, '" +
+                login.getLoginName() + "', '" +
+                login.getPassword() + "')";
 
+        try {
+            db.getConnection().createStatement().execute(query);
+        } catch (SQLException throwables) {
+            System.out.println(query);
+            throwables.printStackTrace();
+        }
     }
 }

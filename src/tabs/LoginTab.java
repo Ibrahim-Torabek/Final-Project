@@ -1,5 +1,6 @@
 package tabs;
 
+import database.DBConst;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
@@ -9,7 +10,9 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import menus.MainMenu;
+import pojo.Login;
 import pojo.User;
+import tables.LoginTable;
 
 public class LoginTab extends Tab {
     private static LoginTab tab;
@@ -59,11 +62,13 @@ public class LoginTab extends Tab {
         gridPane.add(loginButton, 1,3);
 
         loginButton.setOnAction( e -> {
-            tables.Login login = new tables.Login(userName.getText(),password.getText());
-            if(User.getInstance() == null){
+            LoginTable loginTable = new LoginTable();
+            int loginId = loginTable.login(userName.getText(),password.getText());
+            if(loginId == 0){
                 errorMsg.setFill(Color.RED);
                 errorMsg.setText("Cannot Login...");
             } else {
+                User.login(loginId);
                 User user = User.getInstance();
                 errorMsg.setFill(Color.BLUE);
                 errorMsg.setText("Welcome " + user.getFullName() + ".\n Go to the Movie List tab.");

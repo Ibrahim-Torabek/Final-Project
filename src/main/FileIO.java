@@ -5,7 +5,7 @@ import database.LogIntoDatabase;
 import java.io.*;
 
 public class FileIO {
-    public static final String FILE_NAME = "login.dat";
+    public static final String FILE_NAME = "login3.dat";
 
     public static boolean isFileExist(){
         File dbFile = new File(FILE_NAME);

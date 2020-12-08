@@ -18,15 +18,18 @@ public class AddToWatchedList extends Button {
         this.tableView = tableView;
         this.setOnAction(e -> {
             DisplayMovie movie = (DisplayMovie) tableView.getSelectionModel().getSelectedItem();
-            WatchedList watchedMovie = new WatchedList(
-                    0,
-                    User.getInstance().getUserId(),
-                    movie.getId()
-            );
-            WatchedListTable watchedListTable = new WatchedListTable();
-            watchedListTable.insertWatchedMovie(watchedMovie);
-            WatchedListTab.getInstance().refreshTable();
-            System.out.println(movie.getMovieTitle());
+            if(movie != null) {
+                WatchedList watchedMovie = new WatchedList(
+                        0,
+                        User.getInstance().getUserId(),
+                        movie.getId()
+                );
+
+                WatchedListTable watchedListTable = new WatchedListTable();
+                watchedListTable.insertWatchedMovie(watchedMovie);
+                WatchedListTab.getInstance().refreshTable();
+                System.out.println(movie.getMovieTitle());
+            }
         });
     }
 
