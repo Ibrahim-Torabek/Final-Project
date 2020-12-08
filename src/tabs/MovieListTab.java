@@ -77,8 +77,9 @@ public class MovieListTab extends Tab {
         tableView.getItems().addAll(new MovieTable().prettyDisplayAll());
 
 
-        tabTitle = new TextField("Welcome to Movie Tab...");
-        tabTitle.setFont(Font.font("Times New Roman", 30));
+        tabTitle = new TextField("Welcome to Movie Tracer. " +
+                "Go to the Log in/out tab above to log in and manage the movies.");
+        tabTitle.setFont(Font.font("Times New Roman", 26));
 
         // Show a title in border top
         root.setTop(tabTitle);
@@ -114,13 +115,10 @@ public class MovieListTab extends Tab {
         bottomPane.addButton(BottomPane.BUTTON_ADD_TO_WISH_LIST);
         root.setBottom(bottomPane);
 
-
         this.setContent(root);
 
         refreshButtons();
         MainMenu.getInstance().refreshMenus();
-
-
     }
 
     public static MovieListTab getInstance(){
@@ -134,7 +132,8 @@ public class MovieListTab extends Tab {
     public void refreshUserName(){
         if(User.getInstance() != null){
             userName = User.getInstance().getFullName();
-            tabTitle.setText(userName + " you can manage movies now.");
+            tabTitle.setText(userName + " you can manage movies now. Go to Tabs Menu " +
+                    "to see a table or statistics.");
         }
     }
 
@@ -146,6 +145,5 @@ public class MovieListTab extends Tab {
 
     public void refreshButtons(){
         bottomPane.refresh();
-
     }
 }
