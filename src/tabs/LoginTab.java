@@ -14,6 +14,10 @@ import pojo.User;
 public class LoginTab extends Tab {
     private static LoginTab tab;
 
+    private TextField userName;
+    private PasswordField password;
+    public Text errorMsg;
+
     private LoginTab() {
         super("Login");
 
@@ -27,9 +31,9 @@ public class LoginTab extends Tab {
         Label passwordLabel = new Label("Password:");
         passwordLabel.setFont(font);
 
-        TextField userName = new TextField();
+        userName = new TextField();
         userName.setFont(font);
-        PasswordField password = new PasswordField();
+        password = new PasswordField();
         password.setFont(font);
 
         //the title
@@ -37,7 +41,7 @@ public class LoginTab extends Tab {
         loginTitle.setFont(Font.font("Times New Roman", 30));
         loginTitle.setAlignment(Pos.CENTER);
 
-        Text errorMsg = new Text("");
+        errorMsg = new Text("");
 
         gridPane.add(loginTitle, 0, 0, 2, 1);
         gridPane.add(userNameLabel, 0,1);
@@ -89,7 +93,12 @@ public class LoginTab extends Tab {
         if(tab == null){
             tab = new LoginTab();
         }
-
         return tab;
+    }
+    //clear userName field, password field and welcoming message after login
+    public void clearTab() {
+        userName.clear();
+        password.clear();
+        errorMsg.setText(" ");
     }
 }
