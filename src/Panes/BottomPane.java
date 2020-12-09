@@ -10,10 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.HBox;
 import pojo.User;
-import tabs.AddMovieTab;
-import tabs.MovieListTab;
-import tabs.WatchedListTab;
-import tabs.WishListTab;
+import tabs.*;
 
 import java.util.ArrayList;
 
@@ -40,6 +37,7 @@ public class BottomPane extends HBox {
     public static final int BUTTON_REMOVE_FROM_WISH_LIST = 1;
     public static final int BUTTON_ADD_TO_WATCHED_LIST = 2;
     public static final int BUTTON_ADD_TO_WISH_LIST = 3;
+    public static final int BUTTON_DELETE_MOVIE = 4;
 
     AddToWatchedList addToWatchedList;// = new AddToWatchedList(tableView);
     AddToWishList addToWishList;// = new AddToWishList(tableView);
@@ -54,6 +52,7 @@ public class BottomPane extends HBox {
         buttons.add(new RemoveFromWishList(tableView));
         buttons.add(addToWatchedList);
         buttons.add(addToWishList);
+
 
         //this.getChildren().addAll(addToWatchedList,addToWishList);
         this.setSpacing(40);

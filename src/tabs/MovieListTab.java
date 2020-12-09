@@ -6,7 +6,9 @@ import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Font;
 import menus.MainMenu;
+import pojo.CompanyList;
 import pojo.DisplayMovie;
+import pojo.Movie;
 import pojo.User;
 import tables.MovieTable;
 
@@ -101,10 +103,10 @@ public class MovieListTab extends Tab {
         // Show Table view in the border center
         root.setCenter(tableView);
 
-
         bottomPane = new BottomPane(tableView);
         bottomPane.addButton(BottomPane.BUTTON_ADD_TO_WATCHED_LIST);
         bottomPane.addButton(BottomPane.BUTTON_ADD_TO_WISH_LIST);
+        //bottomPane.addButton());
         root.setBottom(bottomPane);
 
         this.setContent(root);

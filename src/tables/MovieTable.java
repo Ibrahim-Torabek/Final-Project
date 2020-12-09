@@ -100,7 +100,7 @@ public class MovieTable implements MovieDAO {
 
     @Override
     public void insertMovie(Movie movie) {
-        String query = "INSERT INTO " + DBConst.TABLE_MOVIE +" VALUES (0, '" +
+        String query = "INSERT INTO " + DBConst.TABLE_MOVIE + " VALUES (0, '" +
                 movie.getMovieTitle() + "', '" +
                 movie.getDirector() + "', " +
                 movie.getProductionCompany() + ", " +
@@ -112,19 +112,22 @@ public class MovieTable implements MovieDAO {
         System.out.println(query);
         try {
             db.getConnection().createStatement().execute(query);
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+        } catch (SQLException throwable) {
+            throwable.printStackTrace();
         }
     }
 
     @Override
-    public void deleteMovie(Movie movie) {
+    public void deleteMovie(int id) {
+        String query = "DELETE FROM " + DBConst.TABLE_MOVIE + " WHERE " +
+                DBConst.MOVIE_COLUMN_ID + " = " + id;
 
-    }
-
-    @Override
-    public void createMovie(Movie movie) {
-
+        try{
+            db.getConnection().createStatement().execute(query);
+        } catch (SQLException throwable) {
+            System.out.println(query);
+            throwable.printStackTrace();
+        }
     }
 
     public ArrayList<DisplayMovie> prettyDisplayAll(){
@@ -153,8 +156,8 @@ public class MovieTable implements MovieDAO {
                 displayMovies.add(movie);
                 System.out.println(movie);
             }
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+        } catch (SQLException throwable) {
+            throwable.printStackTrace();
         }
 
         return displayMovies;
