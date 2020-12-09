@@ -8,6 +8,22 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+
+/**
+ * <h1>Movie Tracer Program</h1>
+ * <h2>Java Project of MAD300 Course</h2>
+ * <p>This class is a Plain Old Java Object class to deal with User Table in the database.
+ * This class also determines if a user logged in. The class's getInstance static method returns a
+ * null value if a user not logged in.
+ * </p>
+ *
+ * @author  Ibrahim Osman, Elena Polyakova
+ * @version 1.0
+ * @since   2020-11-20
+ *
+ * @see tables.UserTable
+ *
+ */
 public class User {
     private static User user;
 

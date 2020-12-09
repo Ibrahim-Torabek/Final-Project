@@ -1,19 +1,43 @@
 package tabs;
 
 import database.DBConst;
+import database.LogIntoDatabase;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import main.FileIO;
 import menus.MainMenu;
 import pojo.Login;
 import pojo.User;
 import tables.LoginTable;
 
+
+/**
+ * <h1>Movie Tracer Program</h1>
+ * <h2>Java Project of MAD300 Course</h2>
+ * <p>This class is an extended class from Tab class to login the system.
+ * If a user logged in the system successfully, this tab will set the User as logged in and refresh all buttons,
+ * tabs and menus.
+ * </p>
+ *
+ * @author  Ibrahim Osman, Elena Polyakova
+ * @version 1.0
+ * @since   2020-11-20
+ *
+ * @see Tab
+ * @see GridPane
+ * @see LoginTable
+ * @see User
+ * @see MovieListTab
+ * @see MainMenu
+ *
+ */
 public class LoginTab extends Tab {
     private static LoginTab tab;
 

@@ -4,15 +4,35 @@ import daos.WatchedListDAO;
 import database.DBConst;
 import database.Database;
 import pojo.DisplayMovie;
+import pojo.Movie;
 import pojo.WatchedList;
-
-import javax.print.DocFlavor;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+
+/**
+ * <h1>Movie Tracer Program</h1>
+ * <h2>Java Project of MAD300 Course</h2>
+ * <p>This class is an implemented class from WatchedListDAO interface. This class
+ * maintain the CRUD operations of watched_list table in database. This class also can pretty
+ * display movie list by returning DisplayMovie class.
+ * </p>
+ *
+ * @author  Ibrahim Osman, Elena Polyakova
+ * @version 1.0
+ * @since   2020-11-20
+ *
+ * @see daos.WatchedListDAO
+ * @see Database
+ * @see Statement
+ * @see ResultSet
+ * @see WatchedList
+ * @see DisplayMovie
+ *
+ */
 public class WatchedListTable implements WatchedListDAO {
     Database db = Database.getInstance();
     ArrayList<WatchedList> watchedMovies;

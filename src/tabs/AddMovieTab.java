@@ -1,6 +1,7 @@
 package tabs;
 
 import Panes.TabPane;
+import database.Database;
 import javafx.collections.FXCollections;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -13,10 +14,32 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import pojo.CompanyList;
+import pojo.DisplayMovie;
 import pojo.Movie;
+import pojo.WishList;
 import tables.CompanyListTable;
 import tables.MovieTable;
 
+import java.sql.ResultSet;
+import java.sql.Statement;
+
+/**
+ * <h1>Movie Tracer Program</h1>
+ * <h2>Java Project of MAD300 Course</h2>
+ * <p>This class is an extended class from Tab class to show a tab. In this tab, the admin user
+ * can add a movie to the database.
+ * </p>
+ *
+ * @author  Ibrahim Osman, Elena Polyakova
+ * @version 1.0
+ * @since   2020-11-20
+ *
+ * @see Tab
+ * @see GridPane
+ * @see Movie
+ * @see MovieTable
+ *
+ */
 public class AddMovieTab extends Tab {
 
     private static AddMovieTab tab;

@@ -1,5 +1,6 @@
 package tabs;
 
+import Panes.AddCompany;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.chart.PieChart;
@@ -12,6 +13,25 @@ import tables.WatchedListTable;
 
 import java.util.ArrayList;
 
+
+/**
+ * <h1>Movie Tracer Program</h1>
+ * <h2>Java Project of MAD300 Course</h2>
+ * <p>This class is an extended class from Tab class to show statistics of movie companies. This tab used Pie Chart
+ * to display statistics on the center of the borderPane.
+ * </p>
+ *
+ * @author  Ibrahim Osman, Elena Polyakova
+ * @version 1.0
+ * @since   2020-11-20
+ *
+ * @see Tab
+ * @see BorderPane
+ * @see PieChart
+ * @see MovieTable
+ * @see CompanyListTable
+ *
+ */
 public class CompanyStatsTab extends Tab {
 
     private static CompanyStatsTab tab;

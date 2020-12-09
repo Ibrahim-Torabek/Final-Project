@@ -9,9 +9,31 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 import pojo.CompanyList;
+import pojo.Movie;
 import tables.CompanyListTable;
+import tables.MovieTable;
 
+
+/**
+ * <h1>Movie Tracer Program</h1>
+ * <h2>Java Project of MAD300 Course</h2>
+ * <p>This class is an extended class from Tab class to show a tab. In this tab, the admin user
+ * can list movie companies form the database, or add a movie company to the database.
+ * </p>
+ *
+ * @author  Ibrahim Osman, Elena Polyakova
+ * @version 1.0
+ * @since   2020-11-20
+ *
+ * @see Tab
+ * @see BorderPane
+ * @see AddCompany
+ * @see CompanyList
+ * @see CompanyListTable
+ *
+ */
 public class CompanyListTab extends Tab {
     private static CompanyListTab tab;
     public TableView tableView;

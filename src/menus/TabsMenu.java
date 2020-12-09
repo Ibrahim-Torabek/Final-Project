@@ -5,6 +5,20 @@ import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
 import tabs.*;
 
+/**
+ * <h1>Movie Tracer Program</h1>
+ * <h2>Java Project of MAD300 Course</h2>
+ * <p>This class extends Menu class to display tabs. It has watchedLis,  wishList Menu Items.
+ *
+ * wishList, watchedList and watchedStats menu items only available logged in user..</p>
+ *
+ * @author  Ibrahim Osman, Elena Polyakova
+ * @version 1.0
+ * @since   2020-11-20
+ *
+ * @see Menu
+ * @see MenuItem
+ */
 public class TabsMenu extends Menu {
     private MenuItem watchedListMenu;
     private MenuItem wishListMenu;

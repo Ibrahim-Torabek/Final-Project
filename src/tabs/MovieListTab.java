@@ -1,22 +1,38 @@
 package tabs;
 
 import Panes.BottomPane;
-import buttons.AddToWatchedList;
-import buttons.AddToWishList;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
 import menus.MainMenu;
 import pojo.DisplayMovie;
 import pojo.User;
-import pojo.WatchedList;
 import tables.MovieTable;
-import tables.WatchedListTable;
 
+
+/**
+ * <h1>Movie Tracer Program</h1>
+ * <h2>Java Project of MAD300 Course</h2>
+ * <p>This class is an extended class from Tab class to display the list of movies in the database.
+ * This tab displays movies in a tableView by prettyDisplay, and the logged user can add any selected movie to the
+ * watched list or wish list. All buttons to be displayed in a bottomPane object.
+ *
+ * </p>
+ *
+ * @author  Ibrahim Osman, Elena Polyakova
+ * @version 1.0
+ * @since   2020-11-20
+ *
+ * @see Tab
+ * @see BorderPane
+ * @see MovieListTab
+ * @see TableView
+ * @see TableColumn
+ * @see BottomPane
+ * @see DisplayMovie
+ * @see MovieTable
+ */
 public class MovieListTab extends Tab {
     private static MovieListTab tab;
     private String userName = "";
@@ -25,8 +41,6 @@ public class MovieListTab extends Tab {
     private TableView tableView = new TableView();
     private BottomPane bottomPane;
 
-    Button addWatchedButton = new Button("Add to Watched List");
-    Button addWishButton = new Button("Add to Wish List");
 
     private MovieListTab() {
         super("Movie List");
@@ -87,28 +101,6 @@ public class MovieListTab extends Tab {
         // Show Table view in the border center
         root.setCenter(tableView);
 
-        // Show "Add to Wishlist" and "Add to Watched List" buttons in the bottom of border pane
-
-
-        addWatchedButton.setOnAction(e -> {
-            DisplayMovie movie = (DisplayMovie) tableView.getSelectionModel().getSelectedItem();
-            WatchedList watchedMovie = new WatchedList(
-                    0,
-                    User.getInstance().getUserId(),
-                    movie.getId()
-            );
-            WatchedListTable watchedListTable = new WatchedListTable();
-            watchedListTable.insertWatchedMovie(watchedMovie);
-            WatchedListTab.getInstance().refreshTable();
-        });
-
-//        HBox buttonBox = new HBox();
-//        AddToWatchedList.getInstance().setTableView(tableView);
-//        AddToWishList.getInstance().setTableView(tableView);
-//        buttonBox.getChildren().addAll(AddToWishList.getInstance(), AddToWatchedList.getInstance(),new AddToWatchedList(tableView));
-//        buttonBox.setSpacing(40);
-//        buttonBox.setPadding(new Insets(20));
-//        buttonBox.setAlignment(Pos.CENTER);
 
         bottomPane = new BottomPane(tableView);
         bottomPane.addButton(BottomPane.BUTTON_ADD_TO_WATCHED_LIST);

@@ -6,11 +6,33 @@ import javafx.scene.chart.PieChart;
 import javafx.scene.control.Tab;
 import javafx.scene.layout.BorderPane;
 import pojo.User;
+import tables.CompanyListTable;
 import tables.MovieTable;
 import tables.WatchedListTable;
 
 import java.util.ArrayList;
 
+
+/**
+ * <h1>Movie Tracer Program</h1>
+ * <h2>Java Project of MAD300 Course</h2>
+ * <p>This class is an extended class from Tab class to show statistics of watched movie for the user.
+ * This tab used Pie Chart to display statistics on the center of the borderPane. This tab only available
+ * for a logged in user.
+ * </p>
+ *
+ * @author  Ibrahim Osman, Elena Polyakova
+ * @version 1.0
+ * @since   2020-11-20
+ *
+ * @see Tab
+ * @see BorderPane
+ * @see PieChart
+ * @see MovieTable
+ * @see WatchedListTable
+ * @see User
+ *
+ */
 public class WatchedStatsTab extends Tab {
 
     private static WatchedStatsTab tab;

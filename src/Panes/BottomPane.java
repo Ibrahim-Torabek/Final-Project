@@ -10,9 +10,31 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.HBox;
 import pojo.User;
+import tabs.AddMovieTab;
+import tabs.MovieListTab;
+import tabs.WatchedListTab;
+import tabs.WishListTab;
 
 import java.util.ArrayList;
 
+
+/**
+ * <h1>Movie Tracer Program</h1>
+ * <h2>Java Project of MAD300 Course</h2>
+ * <p>This class extends HBox class to display buttons in the bottom of a tab
+ * . This class is used by MovieListTab, WatchedListTab and WishListTab classes.
+ * </p>
+ *
+ * @author  Ibrahim Osman, Elena Polyakova
+ * @version 1.0
+ * @since   2020-11-20
+ *
+ * @see HBox
+ * @see Button
+ * @see MovieListTab
+ * @see WatchedListTab
+ * @see WishListTab
+ */
 public class BottomPane extends HBox {
     public static final int BUTTON_REMOVE_FROM_WATCHED_LIST = 0;
     public static final int BUTTON_REMOVE_FROM_WISH_LIST = 1;

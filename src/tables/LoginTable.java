@@ -3,6 +3,7 @@ package tables;
 import daos.LoginDAO;
 import database.DBConst;
 import database.Database;
+import pojo.CompanyList;
 import pojo.Login;
 import pojo.User;
 
@@ -10,6 +11,24 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+/**
+ * <h1>Movie Tracer Program</h1>
+ * <h2>Java Project of MAD300 Course</h2>
+ * <p>This class is an implemented class from LoginDAO interface. This class
+ * maintain the CRUD operations of login table in database.
+ * </p>
+ *
+ * @author  Ibrahim Osman, Elena Polyakova
+ * @version 1.0
+ * @since   2020-11-20
+ *
+ * @see daos.LoginDAO
+ * @see Database
+ * @see Statement
+ * @see ResultSet
+ * @see Login
+ *
+ */
 public class LoginTable implements LoginDAO {
 
 

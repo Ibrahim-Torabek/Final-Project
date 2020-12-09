@@ -1,11 +1,10 @@
 package tables;
 
-import com.mysql.cj.xdevapi.DbDoc;
 import daos.MovieDAO;
 import database.DBConst;
 import database.Database;
-import pojo.CompanyList;
 import pojo.DisplayMovie;
+import pojo.Login;
 import pojo.Movie;
 
 import java.sql.PreparedStatement;
@@ -14,6 +13,27 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+
+/**
+ * <h1>Movie Tracer Program</h1>
+ * <h2>Java Project of MAD300 Course</h2>
+ * <p>This class is an implemented class from MovieDAO interface. This class
+ * maintain the CRUD operations of movie table in database. This class also can pretty
+ * display movie list by returning DisplayMovie class.
+ * </p>
+ *
+ * @author  Ibrahim Osman, Elena Polyakova
+ * @version 1.0
+ * @since   2020-11-20
+ *
+ * @see daos.MovieDAO
+ * @see Database
+ * @see Statement
+ * @see ResultSet
+ * @see Movie
+ * @see DisplayMovie
+ *
+ */
 public class MovieTable implements MovieDAO {
     Database db = Database.getInstance();
     ArrayList<Movie> movies;

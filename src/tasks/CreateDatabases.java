@@ -1,10 +1,36 @@
 package tasks;
 
+import Panes.BottomPane;
 import database.DBConst;
 import database.Database;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.layout.BorderPane;
+import pojo.DisplayMovie;
+import tables.WishListTable;
+import tabs.MovieListTab;
 
 import java.sql.*;
 
+
+/**
+ * <h1>Movie Tracer Program</h1>
+ * <h2>Java Project of MAD300 Course</h2>
+ * <p>This class is a multiThread runnable class. It's main purpose is to create databases in the background.
+ * It creates all databases based on DBConst class.
+ * </p>
+ *
+ * @author  Ibrahim Osman, Elena Polyakova
+ * @version 1.0
+ * @since   2020-11-20
+ *
+ * @see Runnable
+ * @see Database
+ * @see Statement
+ * @see ResultSet
+ *
+ */
 public class CreateDatabases implements Runnable {
     @Override
     public void run() {

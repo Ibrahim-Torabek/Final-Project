@@ -1,5 +1,18 @@
 package database;
 
+import java.sql.Connection;
+
+/**
+ * <h1>Movie Tracer Program</h1>
+ * <h2>Java Project of MAD300 Course</h2>
+ * <p>This is a class to save all database structure as constants.
+ * It saves Tables name and create table sql queries and table columns name.</p>
+ *
+ * @author  Ibrahim Osman, Elena Polyakova
+ * @version 1.0
+ * @since   2020-11-20
+ *
+ */
 public class DBConst {
     //Create constants to set columns and tables
 
