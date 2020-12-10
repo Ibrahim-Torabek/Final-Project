@@ -48,8 +48,8 @@ public class CompanyListTable implements CompanyListDAO {
                 companies.add(company);
                 System.out.println(company);
             }
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+        } catch (SQLException throwable) {
+            throwable.printStackTrace();
         }
 
         return companies;
@@ -71,8 +71,8 @@ public class CompanyListTable implements CompanyListDAO {
                 System.out.println(company);
                 return company;
             }
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+        } catch (SQLException throwable) {
+            throwable.printStackTrace();
         }
 
         return null;
@@ -88,25 +88,22 @@ public class CompanyListTable implements CompanyListDAO {
 
         try{
             db.getConnection().createStatement().execute(query);
-        } catch (SQLException throwables) {
+        } catch (SQLException throwable) {
             System.out.println(query);
-            throwables.printStackTrace();
+            throwable.printStackTrace();
         }
     }
 
     @Override
     public void deleteCompany(int id) {
-        String query = "DELETE FROM " +DBConst.TABLE_COMPANY + " WHERE " +
+        String query = "DELETE FROM " + DBConst.TABLE_COMPANY + " WHERE " +
                 DBConst.COMPANY_COLUMN_ID + " = " + id;
 
         try{
             db.getConnection().createStatement().execute(query);
-        } catch (SQLException throwables) {
+        } catch (SQLException throwable) {
             System.out.println(query);
-            throwables.printStackTrace();
+            throwable.printStackTrace();
         }
-
     }
-
-
 }

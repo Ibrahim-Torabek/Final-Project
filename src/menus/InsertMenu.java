@@ -36,7 +36,7 @@ public class InsertMenu extends Menu {
 
         });
 
-        MenuItem insertCompany = new MenuItem("Insert Company");
+        MenuItem insertCompany = new MenuItem("Insert  Company");
         insertCompany.setOnAction(e -> {
             TabPane tabPane = TabPane.getInstance();
             tabPane.getTabs().add(CompanyListTab.getInstance());

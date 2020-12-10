@@ -1,9 +1,9 @@
 package tabs;
 
 import Panes.TabPane;
+import database.Database;
 import database.LogIntoDatabase;
 import javafx.geometry.Pos;
-import javafx.scene.chart.PieChart;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
@@ -14,14 +14,11 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import main.FileIO;
 import main.Main;
-import menus.LoginMenu;
 import menus.MainMenu;
 import pojo.Login;
 import pojo.User;
 import tables.LoginTable;
-import tables.MovieTable;
 import tables.UserTable;
-import tables.WatchedListTable;
 
 
 /**
@@ -48,6 +45,10 @@ import tables.WatchedListTable;
 public class LoginDBTab extends Tab {
 
     private static LoginDBTab tab;
+    private TextField dbName;
+    private TextField dbUser;
+    private TextField dbPassword;
+
     private VBox root = new VBox();
 
     private LoginDBTab() {
@@ -56,7 +57,7 @@ public class LoginDBTab extends Tab {
         MainMenu.getInstance().getTabsMenu().setDisable(true);
 
         HBox hBox = new HBox();
-        Font font = Font.font("Times New Roman",20);
+        Font font = Font.font("Times New Roman", 20);
 
         GridPane databaseField = new GridPane();
 
@@ -72,28 +73,28 @@ public class LoginDBTab extends Tab {
         setupDatabase.setFill(Color.BLUE);
         setupDatabase.setFont(font);
 
-        databaseField.add(setupDatabase,0,0,2,1);
-        databaseField.add(dbLocationText,0,1);
-        databaseField.add(dbNameText,0,2);
-        databaseField.add(dbUserText,0,3);
-        databaseField.add(dbPasswordText,0,4);
+        databaseField.add(setupDatabase, 0, 0, 2, 1);
+        databaseField.add(dbLocationText, 0, 1);
+        databaseField.add(dbNameText, 0, 2);
+        databaseField.add(dbUserText, 0, 3);
+        databaseField.add(dbPasswordText, 0, 4);
 
 
         // Initial all data fields
-        TextField dbName = new TextField();
-        TextField dbUser = new TextField();
-        TextField dbPassword = new TextField();
+        dbName = new TextField();
+        dbUser = new TextField();
+        dbPassword = new TextField();
         TextField dbLocation = new TextField("jdbc:mysql://localhost/");
 
 
-        databaseField.add(dbLocation,1,1);
-        databaseField.add(dbName,1,2);
-        databaseField.add(dbUser,1,3);
-        databaseField.add(dbPassword,1,4);
+        databaseField.add(dbLocation, 1, 1);
+        databaseField.add(dbName, 1, 2);
+        databaseField.add(dbUser, 1, 3);
+        databaseField.add(dbPassword, 1, 4);
 
 
         Button setDatabaseButton = new Button("Set Up Database");
-        databaseField.add(setDatabaseButton,1,7);
+        databaseField.add(setDatabaseButton, 1, 7);
 
 
         //  +++++++++++++++++++++++++ Admin User setup  ++++++++++++++++++++++++++++++++++
@@ -110,32 +111,32 @@ public class LoginDBTab extends Tab {
         setupUser.setFill(Color.GRAY);
         setupUser.setFont(font);
 
-        userField.add(setupUser,2,0,2,1);
-        userField.add(userNameLabel,2,1);
-        userField.add(passwordLabel,2,2);
-        userField.add(firstNameLabel,2,3);
-        userField.add(lastNameLabel,2,4);
+        userField.add(setupUser, 2, 0, 2, 1);
+        userField.add(userNameLabel, 2, 1);
+        userField.add(passwordLabel, 2, 2);
+        userField.add(firstNameLabel, 2, 3);
+        userField.add(lastNameLabel, 2, 4);
 
         // Initialize all data fields
         TextField username = new TextField();
         PasswordField password = new PasswordField();
         TextField firstName = new TextField();
         TextField lastName = new TextField();
-        userField.add(username,3,1);
-        userField.add(password,3,2);
-        userField.add(firstName,3,3);
-        userField.add(lastName,3,4);
+        userField.add(username, 3, 1);
+        userField.add(password, 3, 2);
+        userField.add(firstName, 3, 3);
+        userField.add(lastName, 3, 4);
 
 
         Button setUserButton = new Button("Setup User");
         setUserButton.setDisable(true);
-        userField.add(setUserButton,3,7);
+        userField.add(setUserButton, 3, 7);
 
         databaseField.setHgap(10);
         databaseField.setVgap(15);
         userField.setHgap(10);
         userField.setVgap(15);
-        hBox.getChildren().addAll(databaseField,userField);
+        hBox.getChildren().addAll(databaseField, userField);
         hBox.setAlignment(Pos.CENTER);
         hBox.setSpacing(150);
 
@@ -146,6 +147,7 @@ public class LoginDBTab extends Tab {
 
         // Set Actions
         setDatabaseButton.setOnAction(e -> {
+
             LogIntoDatabase logIntoDatabase = new LogIntoDatabase(
                     dbLocation.getText(),
                     dbName.getText(),
@@ -160,26 +162,28 @@ public class LoginDBTab extends Tab {
 
         });
 
-        setUserButton.setOnAction(e -> {
-            Login login = new Login(0, username.getText(),password.getText());
-            LoginTable loginTable = new LoginTable();
-            loginTable.insert(login);
-            int loginId = loginTable.login(login.getLoginName(),login.getPassword());
-            if(loginId != 0){
-                User user = new User(0, loginId,firstName.getText(),lastName.getText(),true);
-                UserTable userTable = new UserTable();
-                userTable.insertUser(user);
-                User.login(loginId);
-            }
+            setUserButton.setOnAction(e -> {
+                Login login = new Login(0, username.getText(), password.getText());
+                LoginTable loginTable = new LoginTable();
+                loginTable.insert(login);
+                int loginId = loginTable.login(login.getLoginName(), login.getPassword());
 
-            TabPane tabPane = TabPane.getInstance();
-            if(!tabPane.getTabs().contains(MovieListTab.getInstance()))
-                tabPane.getTabs().add(MovieListTab.getInstance());
-            tabPane.getSelectionModel().select(MovieListTab.getInstance());
-            tabPane.getTabs().remove(LoginDBTab.getInstance());
-            MainMenu.getInstance().getLoginMenu().setDisable(false);
-            MainMenu.getInstance().getTabsMenu().setDisable(false);
-        });
+                if (loginId != 0) {
+                    User user = new User(0, loginId, firstName.getText(), lastName.getText(), true);
+                    UserTable userTable = new UserTable();
+                    userTable.insertUser(user);
+                    User.login(loginId);
+                }
+
+                TabPane tabPane = TabPane.getInstance();
+                if (!tabPane.getTabs().contains(MovieListTab.getInstance()))
+                    tabPane.getTabs().add(MovieListTab.getInstance());
+                tabPane.getSelectionModel().select(MovieListTab.getInstance());
+                tabPane.getTabs().remove(LoginDBTab.getInstance());
+                MainMenu.getInstance().getLoginMenu().setDisable(false);
+                MainMenu.getInstance().getTabsMenu().setDisable(false);
+                MovieListTab.getInstance().refreshUserName();
+            });
 
     }
 
