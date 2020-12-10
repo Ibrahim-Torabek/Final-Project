@@ -95,6 +95,7 @@ public class AddMovieTab extends Tab {
 
         Button addButton = new Button("Add Movie");
         addButton.setOnAction(e -> {
+
             Movie movie = new Movie(0,
                     title.getText(),
                     director.getText(),

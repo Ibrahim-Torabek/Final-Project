@@ -8,7 +8,7 @@ import java.io.Serializable;
  * <h2>Java Project of MAD300 Course</h2>
  * <p>This is a class to save database connection information includes Database name
  * , user and password. It also saves location. This class implements serializable
- * so that can be saved into or read from login.dat file by FileIO class.</p>
+ * so that can be saved into or read from login1.dat file by FileIO class.</p>
  *
  * @author  Ibrahim Osman, Elena Polyakova
  * @version 1.0

@@ -57,6 +57,7 @@ public class Database {
             }
         }
     }
+
     //public static getInstance method
     public static Database getInstance(){
         if (instance == null) {
@@ -65,6 +66,21 @@ public class Database {
         return instance;
     }
 
+    // Test if the database connect successfully
+    public static boolean connect(LogIntoDatabase loginDB){
+        try {
+            //define driver to connect to the database
+            Connection connection;
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            connection = DriverManager.getConnection(loginDB.getDbLocation()
+                            + loginDB.getDbName() + "?serverTimezone=UTC",
+                    loginDB.getDbUser(), loginDB.getDbPassword());
+            System.out.println("Connected");
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
 
     public Connection getConnection() {
         return connection;
