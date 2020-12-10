@@ -106,7 +106,6 @@ public class MovieListTab extends Tab {
         bottomPane = new BottomPane(tableView);
         bottomPane.addButton(BottomPane.BUTTON_ADD_TO_WATCHED_LIST);
         bottomPane.addButton(BottomPane.BUTTON_ADD_TO_WISH_LIST);
-        //bottomPane.addButton());
         root.setBottom(bottomPane);
 
         this.setContent(root);

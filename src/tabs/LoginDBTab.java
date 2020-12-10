@@ -160,15 +160,12 @@ public class LoginDBTab extends Tab {
             );
             FileIO.writeObject(logIntoDatabase);
             Main.loginDB = logIntoDatabase;
-//            TabPane.clearInstance();
+            //TabPane.clearInstance();
             setupUser.setFill(Color.BLUE);
             setUserButton.setDisable(false);
 
         });
 
-        if (username.getText() == null && password.getText() == null) {
-            setUserButton.setDisable(true);
-        } else {
             setUserButton.setOnAction(e -> {
                 Login login = new Login(0, username.getText(), password.getText());
                 LoginTable loginTable = new LoginTable();
@@ -192,7 +189,7 @@ public class LoginDBTab extends Tab {
                 MovieListTab.getInstance().refreshUserName();
 
             });
-        }
+
     }
 
     public static LoginDBTab getInstance() {
