@@ -7,11 +7,11 @@ import java.io.*;
 /**
  * <h1>Movie Tracer Program</h1>
  * <h2>Java Project of MAD300 Course</h2>
- * <p>This class designed for manage login.dat file</br>
+ * <p>This class designed for manage login1.dat file</br>
  * This class has following functions<br>
  * 1. Checking if the file exist.<br>
- * 2. Read an object of LogIntoDatabase class from login.dat file.<br>
- * 3. Write an object of LogIntoDatabase class into login.dat file.
+ * 2. Read an object of LogIntoDatabase class from login1.dat file.<br>
+ * 3. Write an object of LogIntoDatabase class into login1.dat file.
  * </p>
  *
  * @author  Ibrahim Osman, Elena Polyakova

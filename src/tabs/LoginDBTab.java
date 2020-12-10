@@ -5,10 +5,7 @@ import database.Database;
 import database.LogIntoDatabase;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
@@ -20,13 +17,15 @@ import pojo.User;
 import tables.LoginTable;
 import tables.UserTable;
 
+import java.util.Collection;
+
 
 /**
  * <h1>Movie Tracer Program</h1>
  * <h2>Java Project of MAD300 Course</h2>
  * <p>This class is an extended class from Tab class to setup database and set up an admin user.
  * When the operator set up the the database, the system will create a LogIntoDatabase object and write it
- * into login.dat file with FileIO class' static method.
+ * into login1.dat file with FileIO class' static method.
  * The operator only can set up an admin user after the connection of the database.
  * </p>
  *
@@ -68,10 +67,12 @@ public class LoginDBTab extends Tab {
         Text dbNameText = new Text("Database Name:");
         Text dbUserText = new Text("Database User:");
         Text dbPasswordText = new Text("Database Password:");
+        Text dbMsg = new Text("");
 
         // Stylize labels
         setupDatabase.setFill(Color.BLUE);
         setupDatabase.setFont(font);
+        dbMsg.setFill(Color.RED);
 
         databaseField.add(setupDatabase, 0, 0, 2, 1);
         databaseField.add(dbLocationText, 0, 1);
@@ -81,9 +82,9 @@ public class LoginDBTab extends Tab {
 
 
         // Initial all data fields
-        dbName = new TextField();
-        dbUser = new TextField();
-        dbPassword = new TextField();
+        TextField dbName = new TextField();
+        TextField dbUser = new TextField();
+        PasswordField dbPassword = new PasswordField();
         TextField dbLocation = new TextField("jdbc:mysql://localhost/");
 
 
@@ -95,6 +96,7 @@ public class LoginDBTab extends Tab {
 
         Button setDatabaseButton = new Button("Set Up Database");
         databaseField.add(setDatabaseButton, 1, 7);
+        databaseField.add(dbMsg, 1, 8);
 
 
         //  +++++++++++++++++++++++++ Admin User setup  ++++++++++++++++++++++++++++++++++
@@ -105,11 +107,13 @@ public class LoginDBTab extends Tab {
         Text passwordLabel = new Text("Password:");
         Text firstNameLabel = new Text("First Name:");
         Text lastNameLabel = new Text("Last Name:");
+        Text userMsg = new Text("");
 
 
         // Stylize
         setupUser.setFill(Color.GRAY);
         setupUser.setFont(font);
+        userMsg.setFill(Color.RED);
 
         userField.add(setupUser, 2, 0, 2, 1);
         userField.add(userNameLabel, 2, 1);
@@ -147,6 +151,25 @@ public class LoginDBTab extends Tab {
 
         // Set Actions
         setDatabaseButton.setOnAction(e -> {
+            dbMsg.setText("");
+
+            if(dbLocation.getText() == ""){
+                dbMsg.setText("Error: Location is not can be blank");
+                return;
+            }
+            if(dbName.getText() == ""){
+                dbMsg.setText("Error: Name is not can be blank");
+                return;
+            }
+            if(dbUser.getText() == ""){
+                dbMsg.setText("Error: User is not can be blank");
+                return;
+            }
+            if(dbPassword.getText() == ""){
+                dbMsg.setText("Error: Password is not can be blank");
+                return;
+            }
+
 
             LogIntoDatabase logIntoDatabase = new LogIntoDatabase(
                     dbLocation.getText(),
@@ -154,7 +177,11 @@ public class LoginDBTab extends Tab {
                     dbUser.getText(),
                     dbPassword.getText()
             );
-            FileIO.writeObject(logIntoDatabase);
+            if(!Database.connect(logIntoDatabase)){
+                dbMsg.setText("Error: Cannot connect Database");
+                return;
+            }
+
             Main.loginDB = logIntoDatabase;
             //TabPane.clearInstance();
             setupUser.setFill(Color.BLUE);
@@ -163,6 +190,27 @@ public class LoginDBTab extends Tab {
         });
 
             setUserButton.setOnAction(e -> {
+                userMsg.setText("");
+
+                if(username.getText() == ""){
+                    userMsg.setText("Error: User name is empty");
+                    return;
+                }
+                if(password.getText() == ""){
+                    userMsg.setText("Error: Password name is empty");
+                    return;
+                }
+                if(firstName.getText() == ""){
+                    userMsg.setText("Error: First name is empty");
+                    return;
+                }
+                if(lastName.getText() == ""){
+                    userMsg.setText("Error: Last name is empty");
+                    return;
+                }
+
+                FileIO.writeObject(Main.loginDB);
+
                 Login login = new Login(0, username.getText(), password.getText());
                 LoginTable loginTable = new LoginTable();
                 loginTable.insert(login);
