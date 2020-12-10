@@ -175,7 +175,7 @@ public class LoginDBTab extends Tab {
                 if (loginId != 0) {
                     User user = new User(0, loginId, firstName.getText(), lastName.getText(), true);
                     UserTable userTable = new UserTable();
-                    userTable.insertUser(user);
+                    userTable.insertUser(user);gir check
                     User.login(loginId);
                 }
 
