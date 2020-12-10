@@ -183,7 +183,6 @@ public class LoginDBTab extends Tab {
                 MainMenu.getInstance().getLoginMenu().setDisable(false);
                 MainMenu.getInstance().getTabsMenu().setDisable(false);
                 MovieListTab.getInstance().refreshUserName();
-
             });
 
     }
