@@ -4,7 +4,6 @@ import Panes.TabPane;
 import database.Database;
 import database.LogIntoDatabase;
 import javafx.geometry.Pos;
-import javafx.scene.chart.PieChart;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
@@ -15,14 +14,11 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import main.FileIO;
 import main.Main;
-import menus.LoginMenu;
 import menus.MainMenu;
 import pojo.Login;
 import pojo.User;
 import tables.LoginTable;
-import tables.MovieTable;
 import tables.UserTable;
-import tables.WatchedListTable;
 
 
 /**
@@ -175,7 +171,7 @@ public class LoginDBTab extends Tab {
                 if (loginId != 0) {
                     User user = new User(0, loginId, firstName.getText(), lastName.getText(), true);
                     UserTable userTable = new UserTable();
-                    userTable.insertUser(user);gir check
+                    userTable.insertUser(user);
                     User.login(loginId);
                 }
 
